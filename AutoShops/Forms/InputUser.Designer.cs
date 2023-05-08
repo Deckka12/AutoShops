@@ -62,24 +62,27 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(91, 72);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(100, 23);
             this.textBox2.TabIndex = 3;
+            this.textBox2.UseSystemPasswordChar = true;
             // 
             // InputButton
             // 
-            this.InputButton.Location = new System.Drawing.Point(76, 116);
+            this.InputButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.InputButton.Location = new System.Drawing.Point(52, 114);
             this.InputButton.Name = "InputButton";
-            this.InputButton.Size = new System.Drawing.Size(75, 23);
+            this.InputButton.Size = new System.Drawing.Size(105, 38);
             this.InputButton.TabIndex = 4;
             this.InputButton.Text = "Войти";
-            this.InputButton.UseVisualStyleBackColor = true;
+            this.InputButton.UseVisualStyleBackColor = false;
             this.InputButton.Click += new System.EventHandler(this.InputButton_Click);
             // 
             // InputUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 160);
+            this.ClientSize = new System.Drawing.Size(220, 164);
             this.Controls.Add(this.InputButton);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);

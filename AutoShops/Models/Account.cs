@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoShops.Models {
-    public class Account {
+    public class Account:IEntity {
         /// <summary>
         /// Ид сотудника
         /// </summary>

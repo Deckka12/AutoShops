@@ -10,7 +10,8 @@ using VisioForge.Libs.DirectShowLib;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace AutoShops.Models {
-    public class ProductOrder {
+    public class ProductOrder : IEntity
+    {
         /// <summary>
         /// Ид товара из заказа
         /// </summary>

@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using AutoShops.Models;
 using AutoShops.Repositories;
 
-
 namespace AutoShops.DBL
 {
     public  class FormLoad
@@ -28,11 +27,15 @@ namespace AutoShops.DBL
             groupBox.Visible = visible;
             Addcart.Visible = visible;
         }
-        public void FillControls (Button RemoveAddEmpl,Button ThisOrder) {
+        public void FillControls (Button RemoveAddEmpl,Button ThisOrder,Button editProduct,GroupBox comboBox,Button add,Button excel) {
             if(!informationAccounts.IsAvailable)
             {
                 RemoveAddEmpl.Visible = false;
                 ThisOrder.Visible = false;
+                editProduct.Visible = false;
+                comboBox.Enabled = false;
+                add.Visible = false;
+                excel.Visible = false;
             }
         }
 
@@ -115,7 +118,21 @@ namespace AutoShops.DBL
                                         repositories.ViewStateID(comboBox.Text));
             FillOrders(dataGridView1);
         }
+        public void SelectedAccount (DataGridView dataGridView) {
+            AccountRepositories repositories = new AccountRepositories();
+            FillDataGridAccount(dataGridView, repositories.GetAccounts());
+        }
 
-
+        public void FillDataGridAccount (DataGridView dataGridView1, List<Account> account) {
+            if(dataGridView1.Rows.Count > 0)
+                dataGridView1.Rows.Clear();
+            for(int i = 0; i < account.Count; i++)
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = account[i].Name;
+                dataGridView1.Rows[i].Cells[1].Value = account[i].Login;
+                dataGridView1.Rows[i].Cells[2].Value = account[i].Administration;
+            }
+        }
     }
 }

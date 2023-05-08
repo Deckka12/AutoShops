@@ -37,6 +37,7 @@
             this.StateOrder = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.EditStateOrder = new System.Windows.Forms.Button();
+            this.ImportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,19 +113,32 @@
             // 
             // EditStateOrder
             // 
-            this.EditStateOrder.Location = new System.Drawing.Point(843, 84);
+            this.EditStateOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.EditStateOrder.Location = new System.Drawing.Point(767, 72);
             this.EditStateOrder.Name = "EditStateOrder";
-            this.EditStateOrder.Size = new System.Drawing.Size(75, 23);
+            this.EditStateOrder.Size = new System.Drawing.Size(230, 35);
             this.EditStateOrder.TabIndex = 3;
             this.EditStateOrder.Text = "Изменить";
-            this.EditStateOrder.UseVisualStyleBackColor = true;
+            this.EditStateOrder.UseVisualStyleBackColor = false;
             this.EditStateOrder.Click += new System.EventHandler(this.EditStateOrder_Click);
+            // 
+            // ImportExcel
+            // 
+            this.ImportExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ImportExcel.Location = new System.Drawing.Point(767, 113);
+            this.ImportExcel.Name = "ImportExcel";
+            this.ImportExcel.Size = new System.Drawing.Size(230, 34);
+            this.ImportExcel.TabIndex = 4;
+            this.ImportExcel.Text = "Импортировать в Excel";
+            this.ImportExcel.UseVisualStyleBackColor = false;
+            this.ImportExcel.Click += new System.EventHandler(this.ImportExcel_Click);
             // 
             // CurrentOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 608);
+            this.Controls.Add(this.ImportExcel);
             this.Controls.Add(this.EditStateOrder);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.StateOrder);
@@ -151,5 +165,6 @@
         private ComboBox StateOrder;
         private Label label1;
         private Button EditStateOrder;
+        private Button ImportExcel;
     }
 }

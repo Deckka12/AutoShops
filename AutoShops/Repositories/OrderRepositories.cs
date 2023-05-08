@@ -33,6 +33,9 @@ namespace AutoShops.Repositories
         public List<Order> ViewOrder () {
             return _context.Order.ToList();
         }
+        public Order ViewOrderByName(string Name) {
+            return _context.Order.Where(x => x.NumberOrder == Name).FirstOrDefault();
+        }
         public List<ProductOrder> viewProduct (Order order) {
             return _context.ProductOrder.Where(x => x.OrderId == order.IdOrder).ToList();
         }
@@ -69,7 +72,7 @@ namespace AutoShops.Repositories
             _context.Order.Add(orders);
             var cart = _cartRepositories.ShowCart();
             List<ProductOrder> productOrders = new List<ProductOrder>();
-             _context.SaveChangesAsync();
+             _context.SaveChanges();
             for(int i = 0; i < cart.Count; i++)
             {
                 var productOrder = new ProductOrder
@@ -82,7 +85,7 @@ namespace AutoShops.Repositories
                 };
                 sum += cart[i].CostOrder;
                 productOrders.Add(productOrder);
-
+                _context.SaveChanges();
                 if(cart[i].IsNotCountShop)
                     state = true;
             }
@@ -92,9 +95,9 @@ namespace AutoShops.Repositories
                 orders.DateDeliveri = DateTime.Now;
             _context.ProductOrder.AddRange(productOrders);
             orders.CostOrder = sum;
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            _cartRepositories.FullRemoveCart();
+            //_cartRepositories.FullRemoveCart();
 
             return orders;
         }

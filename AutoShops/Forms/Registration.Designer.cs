@@ -34,6 +34,12 @@
             this.Password = new System.Windows.Forms.TextBox();
             this.Admin = new System.Windows.Forms.CheckBox();
             this.Register = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditAccount = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,8 +87,10 @@
             // 
             this.Password.Location = new System.Drawing.Point(148, 122);
             this.Password.Name = "Password";
+            this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(100, 23);
             this.Password.TabIndex = 6;
+            this.Password.UseSystemPasswordChar = true;
             // 
             // Admin
             // 
@@ -96,19 +104,63 @@
             // 
             // Register
             // 
-            this.Register.Location = new System.Drawing.Point(83, 206);
+            this.Register.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Register.Location = new System.Drawing.Point(12, 207);
             this.Register.Name = "Register";
             this.Register.Size = new System.Drawing.Size(123, 33);
             this.Register.TabIndex = 8;
             this.Register.Text = "Зарегистрировать";
-            this.Register.UseVisualStyleBackColor = true;
+            this.Register.UseVisualStyleBackColor = false;
             this.Register.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dataGridView1.Location = new System.Drawing.Point(286, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(335, 237);
+            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ФИО";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Логин";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Статус";
+            this.Column3.Name = "Column3";
+            // 
+            // EditAccount
+            // 
+            this.EditAccount.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.EditAccount.Location = new System.Drawing.Point(148, 207);
+            this.EditAccount.Name = "EditAccount";
+            this.EditAccount.Size = new System.Drawing.Size(123, 33);
+            this.EditAccount.TabIndex = 10;
+            this.EditAccount.Text = "Изменить";
+            this.EditAccount.UseVisualStyleBackColor = false;
+            this.EditAccount.Click += new System.EventHandler(this.EditAccount_Click);
             // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 265);
+            this.ClientSize = new System.Drawing.Size(633, 251);
+            this.Controls.Add(this.EditAccount);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Register);
             this.Controls.Add(this.Admin);
             this.Controls.Add(this.Password);
@@ -119,6 +171,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Registration";
             this.Text = "Registration";
+            this.Load += new System.EventHandler(this.Registration_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +188,10 @@
         private TextBox Password;
         private CheckBox Admin;
         private Button Register;
+        private DataGridView dataGridView1;
+        private Button EditAccount;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
     }
 }

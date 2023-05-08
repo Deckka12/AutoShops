@@ -20,7 +20,6 @@ namespace AutoShops {
         }
         Context db = new Context ();
         AccountRepositories repository = new AccountRepositories ();  
-        ProductRepositories ProductRepositories = new ProductRepositories ();
         private void Main_Load (object sender, EventArgs e) {
 
             //TestCategory(db);

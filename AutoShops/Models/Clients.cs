@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoShops.Models
 {
-    public class Clients
+    public class Clients : IEntity
     {
         /// <summary>
         /// Ид клиента

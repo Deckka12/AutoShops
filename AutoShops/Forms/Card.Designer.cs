@@ -44,7 +44,7 @@
             this.NameProduct,
             this.Price,
             this.Count});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 35);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(344, 150);
@@ -68,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(415, 61);
+            this.label1.Location = new System.Drawing.Point(363, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 15);
             this.label1.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(496, 58);
+            this.textBox1.Location = new System.Drawing.Point(444, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(41, 23);
             this.textBox1.TabIndex = 2;
@@ -84,29 +84,31 @@
             // 
             // EditCount
             // 
-            this.EditCount.Location = new System.Drawing.Point(432, 87);
+            this.EditCount.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.EditCount.Location = new System.Drawing.Point(363, 34);
             this.EditCount.Name = "EditCount";
-            this.EditCount.Size = new System.Drawing.Size(75, 23);
+            this.EditCount.Size = new System.Drawing.Size(122, 23);
             this.EditCount.TabIndex = 3;
             this.EditCount.Text = "Изменить";
-            this.EditCount.UseVisualStyleBackColor = true;
+            this.EditCount.UseVisualStyleBackColor = false;
             this.EditCount.Click += new System.EventHandler(this.button1_Click);
             // 
             // Remove
             // 
-            this.Remove.Location = new System.Drawing.Point(432, 116);
+            this.Remove.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Remove.Location = new System.Drawing.Point(362, 63);
             this.Remove.Name = "Remove";
-            this.Remove.Size = new System.Drawing.Size(75, 23);
+            this.Remove.Size = new System.Drawing.Size(123, 23);
             this.Remove.TabIndex = 4;
             this.Remove.Text = "Удалить";
-            this.Remove.UseVisualStyleBackColor = true;
+            this.Remove.UseVisualStyleBackColor = false;
             this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
             // Card
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 293);
+            this.ClientSize = new System.Drawing.Size(491, 162);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.EditCount);
             this.Controls.Add(this.textBox1);

@@ -14,9 +14,9 @@ using System.Windows.Forms;
 
 namespace AutoShops.Forms
 {
-    public partial class ExecuteOrders : Form
+    public partial class ExecuteOrderssss : Form
     {
-        public ExecuteOrders () {
+        public ExecuteOrderssss () {
             InitializeComponent();
         }
         FormLoadCart cart = new FormLoadCart ();
@@ -31,6 +31,8 @@ namespace AutoShops.Forms
         }
 
         private void button1_Click (object sender, EventArgs e) {
+            CartRepositories cartRepositories = new CartRepositories();
+            var cart = cartRepositories.ShowCart();
             Clients client = new Clients()
             {
                 Name = Name.Text,
@@ -41,8 +43,8 @@ namespace AutoShops.Forms
                 Email = Email.Text
             };
             var order =OrderRepositories.Add(client);
-            //SendMail.Send(client.Email, order);
-            //Thread.Sleep(300);
+            SendMail.Send(client.Email, order,cart);
+            Thread.Sleep(300);
             this.Close();
         }
 

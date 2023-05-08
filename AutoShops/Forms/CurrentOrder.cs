@@ -1,4 +1,5 @@
 ﻿using AutoShops.DBL;
+using AutoShops.DBL.Excel;
 using AutoShops.Repositories;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,13 @@ namespace AutoShops.Forms
             {
                 MessageBox.Show("Выберите запись для изменения");
             }
+        }
+
+        private void ImportExcel_Click (object sender, EventArgs e) {
+            if(dataGridView1.Rows.Count > 0)
+                InputExcel.Input(dataGridView1);
+            else
+                MessageBox.Show("Нет данных для вывода");
         }
     }
 }

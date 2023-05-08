@@ -35,5 +35,10 @@ namespace AutoShops.Repositories
             return _context.Category.Where(x => x.NameCategory == name).FirstOrDefault().Id;
         }
 
+       
+        public string ShowCategorName (int ID) {
+            return _context.Category.Where(x => x.Id == ID).FirstOrDefault().NameCategory;
+        }
+
     }
 }

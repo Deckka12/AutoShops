@@ -74,7 +74,7 @@ namespace AutoShops.Forms
 
                     button1.Text = "OK";
                     label.Location = new Point(10, 10);
-                    label.Size = new Size(198, 86);
+                    label.Size = new Size(218, 86);
                     label.Text = $"Удалить товар полностью? Если нужно удалить только опредленное количество введите количество и нажмите ОК, если нужно удалить все, просто нажмите ОК, для отмены нажмите Отмена";
                     text.Location = new Point(label.Left, label.Height + label.Top + 10);
                     button1.Location = new Point(text.Left, text.Height + text.Top + 10);

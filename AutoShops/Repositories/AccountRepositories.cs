@@ -4,6 +4,7 @@ using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -19,6 +20,10 @@ namespace AutoShops.Repositories {
         /// <param name="account"></param>
         public void Add (Account account) {
             using(var addAccount = new Context()) {
+                if(addAccount.Accounts.Any(x=>x.Name==account.Name && x.Login ==account.Login))
+                {
+                    throw new Exception($"Пользователь {account.Name} с логином {account.Login} уже зарегистрирован.");
+                }
                 var addUser = new Account { Name = account.Name, Login = account.Login, Password = account.Password, Administration = account.Administration };
                 addAccount.Accounts.Add(addUser);
                 addAccount.SaveChanges();
@@ -59,6 +64,10 @@ namespace AutoShops.Repositories {
                 }
             }
         }
+        /// <summary>
+        /// Проверка администратор или нет
+        /// </summary>
+        /// <returns></returns>
         public bool OutputAccauntIsAdmin () {
             using(var addAccount = new Context())
             {
@@ -106,8 +115,16 @@ namespace AutoShops.Repositories {
         /// Обновление данных аккаунта
         /// </summary>
         /// <param name="account"></param>
-        public void Update (Account account) {
-            
+        public void Update (Account old,Account newAccount) {
+            using(var db = new Context())
+            {
+                old = db.Accounts.Where(x => x.Name == old.Name).FirstOrDefault();
+                old.Name=newAccount.Name;
+                old.Password = newAccount.Password;
+                old.Login = newAccount.Login;
+                old.Administration = newAccount.Administration;
+                db.SaveChangesAsync();
+            }
         }
         /// <summary>
         /// Обновление пароля
@@ -117,6 +134,23 @@ namespace AutoShops.Repositories {
             using(var db = new Context()) {
                 account.Password = newPass;
                 db.SaveChanges();
+            }
+        }
+        /// <summary>
+        /// Получить всех пользователей
+        /// </summary>
+        /// <returns></returns>
+        public List<Account> GetAccounts () {
+            using(var db = new Context())
+            {
+                return db.Accounts.ToList();
+            }
+        }
+
+        public Account GetAccount(string Name) {
+            using(var db = new Context())
+            {
+                return db.Accounts.Where(x => x.Name == Name).FirstOrDefault();
             }
         }
     }

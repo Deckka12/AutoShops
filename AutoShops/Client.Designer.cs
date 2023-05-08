@@ -40,9 +40,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Addcart = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.EditProduct = new System.Windows.Forms.Button();
+            this.CategoryProduct = new System.Windows.Forms.ComboBox();
+            this.CommentProduct = new System.Windows.Forms.TextBox();
+            this.PriceProduct = new System.Windows.Forms.TextBox();
+            this.NameProduct = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ViewExcel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewProduct)).BeginInit();
             this.Filtered.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ThisOrder
@@ -138,18 +151,21 @@
             // 
             // ViewProduct
             // 
+            this.ViewProduct.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.ViewProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ViewProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameItem,
             this.Category,
             this.Price});
             this.ViewProduct.Location = new System.Drawing.Point(256, 134);
+            this.ViewProduct.Margin = new System.Windows.Forms.Padding(0);
             this.ViewProduct.Name = "ViewProduct";
             this.ViewProduct.RowTemplate.Height = 25;
             this.ViewProduct.Size = new System.Drawing.Size(544, 524);
             this.ViewProduct.TabIndex = 2;
             this.ViewProduct.Visible = false;
-            this.ViewProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.ViewProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.ViewProduct.SelectionChanged += new System.EventHandler(this.ViewProduct_SelectionChanged);
             // 
             // NameItem
             // 
@@ -220,20 +236,142 @@
             // 
             // Addcart
             // 
-            this.Addcart.Location = new System.Drawing.Point(806, 134);
+            this.Addcart.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Addcart.Location = new System.Drawing.Point(498, 36);
             this.Addcart.Name = "Addcart";
-            this.Addcart.Size = new System.Drawing.Size(103, 50);
+            this.Addcart.Size = new System.Drawing.Size(146, 50);
             this.Addcart.TabIndex = 5;
             this.Addcart.Text = "Добавить в корзину";
-            this.Addcart.UseVisualStyleBackColor = true;
+            this.Addcart.UseVisualStyleBackColor = false;
             this.Addcart.Visible = false;
             this.Addcart.Click += new System.EventHandler(this.Addcart_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ViewExcel);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.EditProduct);
+            this.groupBox1.Controls.Add(this.CategoryProduct);
+            this.groupBox1.Controls.Add(this.CommentProduct);
+            this.groupBox1.Controls.Add(this.PriceProduct);
+            this.groupBox1.Controls.Add(this.NameProduct);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Location = new System.Drawing.Point(806, 7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(212, 651);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Информция/изменение товара";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(5, 358);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 50);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Добавить продукт";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // EditProduct
+            // 
+            this.EditProduct.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.EditProduct.Location = new System.Drawing.Point(5, 306);
+            this.EditProduct.Name = "EditProduct";
+            this.EditProduct.Size = new System.Drawing.Size(200, 46);
+            this.EditProduct.TabIndex = 10;
+            this.EditProduct.Text = "Изменить";
+            this.EditProduct.UseVisualStyleBackColor = false;
+            this.EditProduct.Click += new System.EventHandler(this.EditProduct_Click);
+            // 
+            // CategoryProduct
+            // 
+            this.CategoryProduct.FormattingEnabled = true;
+            this.CategoryProduct.Location = new System.Drawing.Point(6, 277);
+            this.CategoryProduct.Name = "CategoryProduct";
+            this.CategoryProduct.Size = new System.Drawing.Size(199, 23);
+            this.CategoryProduct.TabIndex = 9;
+            // 
+            // CommentProduct
+            // 
+            this.CommentProduct.Location = new System.Drawing.Point(6, 184);
+            this.CommentProduct.Multiline = true;
+            this.CommentProduct.Name = "CommentProduct";
+            this.CommentProduct.Size = new System.Drawing.Size(199, 69);
+            this.CommentProduct.TabIndex = 7;
+            // 
+            // PriceProduct
+            // 
+            this.PriceProduct.Location = new System.Drawing.Point(6, 131);
+            this.PriceProduct.Name = "PriceProduct";
+            this.PriceProduct.Size = new System.Drawing.Size(199, 23);
+            this.PriceProduct.TabIndex = 6;
+            // 
+            // NameProduct
+            // 
+            this.NameProduct.Location = new System.Drawing.Point(6, 72);
+            this.NameProduct.Name = "NameProduct";
+            this.NameProduct.Size = new System.Drawing.Size(199, 23);
+            this.NameProduct.TabIndex = 5;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 259);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 15);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Категория:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 166);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 15);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Описание:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 106);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 15);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Цена:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 15);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Название:";
+            // 
+            // ViewExcel
+            // 
+            this.ViewExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ViewExcel.Location = new System.Drawing.Point(5, 414);
+            this.ViewExcel.Name = "ViewExcel";
+            this.ViewExcel.Size = new System.Drawing.Size(200, 50);
+            this.ViewExcel.TabIndex = 12;
+            this.ViewExcel.Text = "Выгрузить в Excel";
+            this.ViewExcel.UseVisualStyleBackColor = false;
+            this.ViewExcel.Click += new System.EventHandler(this.ViewExcel_Click);
             // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 658);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Addcart);
             this.Controls.Add(this.Filtered);
             this.Controls.Add(this.ViewProduct);
@@ -246,6 +384,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ViewProduct)).EndInit();
             this.Filtered.ResumeLayout(false);
             this.Filtered.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -269,5 +409,17 @@
         private TextBox NamesProduct;
         private Button Cart;
         private Button Addcart;
+        private GroupBox groupBox1;
+        private Label label5;
+        private Label label4;
+        private ComboBox CategoryProduct;
+        private TextBox CommentProduct;
+        private TextBox PriceProduct;
+        private TextBox NameProduct;
+        private Label label8;
+        private Label label6;
+        private Button EditProduct;
+        private Button button1;
+        private Button ViewExcel;
     }
 }

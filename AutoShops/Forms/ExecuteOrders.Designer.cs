@@ -1,6 +1,6 @@
 ﻿namespace AutoShops.Forms
 {
-    partial class ExecuteOrders
+    partial class ExecuteOrderssss
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemOrder = new System.Windows.Forms.GroupBox();
             this.InfoCLient = new System.Windows.Forms.GroupBox();
-            this.ExecuteOrderss = new System.Windows.Forms.Button();
+            this.ExecuteOrdersss = new System.Windows.Forms.Button();
             this.Email = new System.Windows.Forms.TextBox();
             this.Phone = new System.Windows.Forms.TextBox();
             this.Addres = new System.Windows.Forms.TextBox();
@@ -92,7 +92,7 @@
             // 
             // InfoCLient
             // 
-            this.InfoCLient.Controls.Add(this.ExecuteOrderss);
+            this.InfoCLient.Controls.Add(this.ExecuteOrdersss);
             this.InfoCLient.Controls.Add(this.Email);
             this.InfoCLient.Controls.Add(this.Phone);
             this.InfoCLient.Controls.Add(this.Addres);
@@ -113,15 +113,16 @@
             this.InfoCLient.Text = "Информация о покупателе";
             this.InfoCLient.Enter += new System.EventHandler(this.InfoCLient_Enter);
             // 
-            // ExecuteOrderss
+            // ExecuteOrdersss
             // 
-            this.ExecuteOrderss.Location = new System.Drawing.Point(59, 275);
-            this.ExecuteOrderss.Name = "ExecuteOrderss";
-            this.ExecuteOrderss.Size = new System.Drawing.Size(75, 23);
-            this.ExecuteOrderss.TabIndex = 12;
-            this.ExecuteOrderss.Text = "Оформить заказ";
-            this.ExecuteOrderss.UseVisualStyleBackColor = true;
-            this.ExecuteOrderss.Click += new System.EventHandler(this.button1_Click);
+            this.ExecuteOrdersss.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ExecuteOrdersss.Location = new System.Drawing.Point(46, 268);
+            this.ExecuteOrdersss.Name = "ExecuteOrdersss";
+            this.ExecuteOrdersss.Size = new System.Drawing.Size(110, 40);
+            this.ExecuteOrdersss.TabIndex = 12;
+            this.ExecuteOrdersss.Text = "Оформить заказ";
+            this.ExecuteOrdersss.UseVisualStyleBackColor = false;
+            this.ExecuteOrdersss.Click += new System.EventHandler(this.button1_Click);
             // 
             // Email
             // 
@@ -219,14 +220,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Имя";
             // 
-            // ExecuteOrders
+            // ExecuteOrderssss
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 332);
             this.Controls.Add(this.InfoCLient);
             this.Controls.Add(this.ItemOrder);
-
             this.Text = "ExecuteOrders";
             this.Load += new System.EventHandler(this.ExecuteOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ItemsOrders)).EndInit();
@@ -243,7 +243,7 @@
         private GroupBox ItemOrder;
         private GroupBox InfoCLient;
         private Label label1;
-        private Button ExecuteOrderss;
+        private Button ExecuteOrdersss;
         private TextBox Email;
         private TextBox Phone;
         private TextBox Addres;

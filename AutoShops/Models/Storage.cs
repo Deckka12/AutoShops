@@ -9,7 +9,7 @@ using VisioForge.Libs.DirectShowLib;
 
 namespace AutoShops.Models
 {
-    public class Storage
+    public class Storage : IEntity
     {
         [Key]
         public int Id { get; set; }
