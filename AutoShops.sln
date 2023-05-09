@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoShops", "AutoShops\AutoShops.csproj", "{5710F9BA-C1BC-4796-BB40-9140E4BEC106}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextLenght", "..\TextLenght\TextLenght\TextLenght.csproj", "{0112AAF4-91F0-435C-8C2C-BD499F1C8E9A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5710F9BA-C1BC-4796-BB40-9140E4BEC106} = {5710F9BA-C1BC-4796-BB40-9140E4BEC106}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

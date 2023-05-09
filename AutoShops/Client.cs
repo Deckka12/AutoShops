@@ -36,6 +36,7 @@ namespace AutoShops
             ViewParts.BackColor = Color.DeepSkyBlue;
             defaultBackColor = OrdersParts.BackColor;
             form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1,button1,ViewExcel);
+            ViewProduct.ReadOnly=true;
         }
         private void ButtonColor (object sender, EventArgs e) {
             ViewParts.GotFocus += (sender, e) => { ViewParts.BackColor = Color.DeepSkyBlue; };
@@ -151,12 +152,26 @@ namespace AutoShops
         }
 
         private void button1_Click (object sender, EventArgs e) {
+            OpenFileDialog saveFileDialog = new OpenFileDialog();
+            saveFileDialog.Filter = "Text files(*.jpg)|*.jpg|All files(*.*)|*.*";
+            if(saveFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+
+            }
+            byte[] imageData;
+            using(System.IO.FileStream fs = new System.IO.FileStream(saveFileDialog.FileName, FileMode.Open))
+            {
+                imageData = new byte[fs.Length];
+                fs.Read(imageData, 0, imageData.Length);
+            }
+
             var productNew = new Product()
             {
                 Name = NameProduct.Text,
                 Price = decimal.Parse(PriceProduct.Text),
                 Comment = CommentProduct.Text,
-                IdCategory = CategoryRepositories.ShowCategorID(CategoryProduct.Text)
+                IdCategory = CategoryRepositories.ShowCategorID(CategoryProduct.Text),
+                Image = imageData
             };
             try
             {
