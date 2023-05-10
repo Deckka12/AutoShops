@@ -30,13 +30,14 @@ namespace AutoShops
         FormLoad form = new FormLoad();
         CategoryRepositories CategoryRepositories = new CategoryRepositories();
         Product OldProduct;
+        Category oldCategoty;
         CartRepositories cartRepositories = new CartRepositories();
         private void Client_Load (object sender, EventArgs e) {
             ViewParts_Click(sender, e);
             ViewParts.BackColor = Color.DeepSkyBlue;
             defaultBackColor = OrdersParts.BackColor;
-            form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1,button1,ViewExcel);
-            ViewProduct.ReadOnly=true;
+            form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1, button1, ViewExcel, RemoveProduct, AddCat, EditCate);
+            ViewProduct.ReadOnly = true;
         }
         private void ButtonColor (object sender, EventArgs e) {
             ViewParts.GotFocus += (sender, e) => { ViewParts.BackColor = Color.DeepSkyBlue; };
@@ -52,6 +53,7 @@ namespace AutoShops
             ViewParts.Click += ButtonColor;
             form.viewPartsVisible(ViewProduct, Filtered, Addcart, true);
             form.FillComboBoxCategory(Categories);
+            form.FillComboBoxCategory(CatName);
             form.FillComboBoxCategory(CategoryProduct);
             form.FillDataGrid(ViewProduct, orders.ShowOrders());
         }
@@ -130,7 +132,7 @@ namespace AutoShops
                     NameProduct.Text = OldProduct.Name;
                     PriceProduct.Text = OldProduct.Price.ToString();
                     CommentProduct.Text = OldProduct.Comment;
-                    CategoryProduct.SelectedItem = CategoryRepositories.ShowCategorName(OldProduct.IdCategory);
+                    CategoryProduct.SelectedItem = CategoryRepositories.ShowCategorName(OldProduct.CategoryID);
                 }
             }
         }
@@ -144,7 +146,7 @@ namespace AutoShops
                     Name = NameProduct.Text,
                     Price = decimal.Parse(PriceProduct.Text),
                     Comment = CommentProduct.Text,
-                    IdCategory = CategoryRepositories.ShowCategorID(CategoryProduct.Text)
+                    CategoryID = CategoryRepositories.ShowCategorID(CategoryProduct.Text)
                 };
                 orders.EditProduct(OldProduct, productNew);
                 form.FillDataGrid(ViewProduct, orders.ShowOrders());
@@ -170,7 +172,7 @@ namespace AutoShops
                 Name = NameProduct.Text,
                 Price = decimal.Parse(PriceProduct.Text),
                 Comment = CommentProduct.Text,
-                IdCategory = CategoryRepositories.ShowCategorID(CategoryProduct.Text),
+                CategoryID = CategoryRepositories.ShowCategorID(CategoryProduct.Text),
                 Image = imageData
             };
             try
@@ -186,6 +188,46 @@ namespace AutoShops
 
         private void ViewExcel_Click (object sender, EventArgs e) {
             InputExcel.Input(ViewProduct);
+        }
+
+        private void RemoveProduct_Click (object sender, EventArgs e) {
+            int selectedRowCount = ViewProduct.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if(selectedRowCount > 0)
+            {
+                var product = new Product()
+                {
+                    Name = ViewProduct.SelectedRows[0].Cells[0].Value.ToString(),
+                    Price = decimal.Parse(ViewProduct.SelectedRows[0].Cells[2].Value.ToString()),
+                   
+                };
+                orders.RemoveProduct(product);
+                form.FillDataGrid(ViewProduct, orders.ShowOrders());
+            }
+        }
+
+        private void EditCate_Click (object sender, EventArgs e) {
+            var NewCat = new Category
+            {
+                NameCategory = CatName.Text
+            };
+            CategoryRepositories.EditCategory(oldCategoty, NewCat);
+            ViewParts_Click(sender, e);
+        }
+
+        private void CatName_SelectedIndexChanged (object sender, EventArgs e) {
+            oldCategoty = new Category
+            {
+                NameCategory = CatName.Text
+            };
+        }
+
+        private void AddCat_Click (object sender, EventArgs e) {
+            var NewCat = new Category
+            {
+                NameCategory = CatName.Text
+            };
+            CategoryRepositories.AddCategory(NewCat);
+            ViewParts_Click(sender, e);
         }
     }
 }

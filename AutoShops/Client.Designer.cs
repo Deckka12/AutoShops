@@ -37,10 +37,12 @@
             this.Categories = new System.Windows.Forms.ComboBox();
             this.Filtered = new System.Windows.Forms.GroupBox();
             this.NamesProduct = new System.Windows.Forms.TextBox();
+            this.Addcart = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Addcart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RemoveProduct = new System.Windows.Forms.Button();
+            this.ViewExcel = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.EditProduct = new System.Windows.Forms.Button();
             this.CategoryProduct = new System.Windows.Forms.ComboBox();
@@ -51,11 +53,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ViewExcel = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.AddCat = new System.Windows.Forms.Button();
+            this.EditCate = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.CatName = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewProduct)).BeginInit();
             this.Filtered.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ThisOrder
@@ -188,7 +195,7 @@
             // Categories
             // 
             this.Categories.FormattingEnabled = true;
-            this.Categories.Location = new System.Drawing.Point(85, 22);
+            this.Categories.Location = new System.Drawing.Point(85, 25);
             this.Categories.Name = "Categories";
             this.Categories.Size = new System.Drawing.Size(121, 23);
             this.Categories.TabIndex = 3;
@@ -197,6 +204,7 @@
             // Filtered
             // 
             this.Filtered.Controls.Add(this.NamesProduct);
+            this.Filtered.Controls.Add(this.Addcart);
             this.Filtered.Controls.Add(this.label3);
             this.Filtered.Controls.Add(this.label2);
             this.Filtered.Controls.Add(this.Categories);
@@ -216,6 +224,18 @@
             this.NamesProduct.TabIndex = 6;
             this.NamesProduct.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // Addcart
+            // 
+            this.Addcart.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Addcart.Location = new System.Drawing.Point(32, 83);
+            this.Addcart.Name = "Addcart";
+            this.Addcart.Size = new System.Drawing.Size(165, 34);
+            this.Addcart.TabIndex = 5;
+            this.Addcart.Text = "Добавить в корзину";
+            this.Addcart.UseVisualStyleBackColor = false;
+            this.Addcart.Visible = false;
+            this.Addcart.Click += new System.EventHandler(this.Addcart_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -228,26 +248,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 25);
+            this.label2.Location = new System.Drawing.Point(16, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Категория";
             // 
-            // Addcart
-            // 
-            this.Addcart.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Addcart.Location = new System.Drawing.Point(498, 36);
-            this.Addcart.Name = "Addcart";
-            this.Addcart.Size = new System.Drawing.Size(146, 50);
-            this.Addcart.TabIndex = 5;
-            this.Addcart.Text = "Добавить в корзину";
-            this.Addcart.UseVisualStyleBackColor = false;
-            this.Addcart.Visible = false;
-            this.Addcart.Click += new System.EventHandler(this.Addcart_Click);
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.RemoveProduct);
             this.groupBox1.Controls.Add(this.ViewExcel);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.EditProduct);
@@ -265,6 +274,29 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информция/изменение товара";
+            // 
+            // RemoveProduct
+            // 
+            this.RemoveProduct.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.RemoveProduct.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.RemoveProduct.Location = new System.Drawing.Point(6, 470);
+            this.RemoveProduct.Name = "RemoveProduct";
+            this.RemoveProduct.Size = new System.Drawing.Size(199, 52);
+            this.RemoveProduct.TabIndex = 13;
+            this.RemoveProduct.Text = "Удалить";
+            this.RemoveProduct.UseVisualStyleBackColor = false;
+            this.RemoveProduct.Click += new System.EventHandler(this.RemoveProduct_Click);
+            // 
+            // ViewExcel
+            // 
+            this.ViewExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ViewExcel.Location = new System.Drawing.Point(5, 414);
+            this.ViewExcel.Name = "ViewExcel";
+            this.ViewExcel.Size = new System.Drawing.Size(200, 50);
+            this.ViewExcel.TabIndex = 12;
+            this.ViewExcel.Text = "Выгрузить в Excel";
+            this.ViewExcel.UseVisualStyleBackColor = false;
+            this.ViewExcel.Click += new System.EventHandler(this.ViewExcel_Click);
             // 
             // button1
             // 
@@ -355,24 +387,66 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Название:";
             // 
-            // ViewExcel
+            // groupBox2
             // 
-            this.ViewExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ViewExcel.Location = new System.Drawing.Point(5, 414);
-            this.ViewExcel.Name = "ViewExcel";
-            this.ViewExcel.Size = new System.Drawing.Size(200, 50);
-            this.ViewExcel.TabIndex = 12;
-            this.ViewExcel.Text = "Выгрузить в Excel";
-            this.ViewExcel.UseVisualStyleBackColor = false;
-            this.ViewExcel.Click += new System.EventHandler(this.ViewExcel_Click);
+            this.groupBox2.Controls.Add(this.AddCat);
+            this.groupBox2.Controls.Add(this.EditCate);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.CatName);
+            this.groupBox2.Location = new System.Drawing.Point(498, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(302, 131);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Категории";
+            // 
+            // AddCat
+            // 
+            this.AddCat.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.AddCat.Location = new System.Drawing.Point(158, 83);
+            this.AddCat.Name = "AddCat";
+            this.AddCat.Size = new System.Drawing.Size(136, 34);
+            this.AddCat.TabIndex = 15;
+            this.AddCat.Text = "Добавить";
+            this.AddCat.UseVisualStyleBackColor = false;
+            this.AddCat.Click += new System.EventHandler(this.AddCat_Click);
+            // 
+            // EditCate
+            // 
+            this.EditCate.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.EditCate.Location = new System.Drawing.Point(16, 83);
+            this.EditCate.Name = "EditCate";
+            this.EditCate.Size = new System.Drawing.Size(136, 34);
+            this.EditCate.TabIndex = 14;
+            this.EditCate.Text = "Изменить";
+            this.EditCate.UseVisualStyleBackColor = false;
+            this.EditCate.Click += new System.EventHandler(this.EditCate_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 15);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Категория";
+            // 
+            // CatName
+            // 
+            this.CatName.FormattingEnabled = true;
+            this.CatName.Location = new System.Drawing.Point(85, 25);
+            this.CatName.Name = "CatName";
+            this.CatName.Size = new System.Drawing.Size(198, 23);
+            this.CatName.TabIndex = 7;
+            this.CatName.SelectedIndexChanged += new System.EventHandler(this.CatName_SelectedIndexChanged);
             // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 658);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.Addcart);
             this.Controls.Add(this.Filtered);
             this.Controls.Add(this.ViewProduct);
             this.Controls.Add(this.panel1);
@@ -386,6 +460,8 @@
             this.Filtered.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -421,5 +497,11 @@
         private Button EditProduct;
         private Button button1;
         private Button ViewExcel;
+        private Button RemoveProduct;
+        private GroupBox groupBox2;
+        private Button AddCat;
+        private Button EditCate;
+        private Label label7;
+        private ComboBox CatName;
     }
 }

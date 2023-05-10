@@ -1,10 +1,12 @@
-﻿using AutoShops.Models;
-using Gst.WebRTC;
+﻿using AutoShops.DBL;
+using AutoShops.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace AutoShops.Repositories
 {
@@ -17,6 +19,11 @@ namespace AutoShops.Repositories
         ClientRepositories _clientRepositories = new ClientRepositories();
         CartRepositories _cartRepositories = new CartRepositories();
         StateRepositories _stateRepositories = new StateRepositories();
+        /// <summary>
+        /// Добавление заказа
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public Order Add (Clients client) {
             
             var clinets = _clientRepositories.Search(client);
@@ -30,31 +37,44 @@ namespace AutoShops.Repositories
             }
 
         }
+        /// <summary>
+        /// Вывод заказа
+        /// </summary>
+        /// <returns></returns>
         public List<Order> ViewOrder () {
-            return _context.Order.ToList();
+            return _context.Order.Include(x=>x.StateOrder).ToList();
         }
-        public Order ViewOrderByName(string Name) {
-            return _context.Order.Where(x => x.NumberOrder == Name).FirstOrDefault();
-        }
-        public List<ProductOrder> viewProduct (Order order) {
-            return _context.ProductOrder.Where(x => x.OrderId == order.IdOrder).ToList();
-        }
-        public string ViewNameState(Order order) {
-            return _context.StateOrder.Where(x => x.IdState == order.StateOrderId).FirstOrDefault().Name;
-        }
+        /// <summary>
+        /// вывод состояния заказа
+        /// </summary>
+        /// <returns></returns>
         public List<StateOrder> ViewState () {
             return _context.StateOrder.ToList();
         }
+        /// <summary>
+        ///  вывод шд состояния
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public int ViewStateID (string name) {
             return _context.StateOrder.Where(x=>x.Name==name).FirstOrDefault().IdState;
         }
-
+        /// <summary>
+        /// Редактирования состояния заказа
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="idState"></param>
         public void EditStateOrder (string name,int idState) {
             var c= _context.Order.Where(x => x.NumberOrder == name).FirstOrDefault();
             c.StateOrderId = idState;
             _context.SaveChangesAsync();
         }
-        public  Order AddOrder (Clients client) {
+        /// <summary>
+        /// Добавление заказа
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        private  Order AddOrder (Clients client) {
 
             Random random = new Random();
             var states = _stateRepositories.viewState("Создан");
@@ -80,7 +100,7 @@ namespace AutoShops.Repositories
                     Count = cart[i].Count,
                     Sum = cart[i].CostOrder,
                     OrderId = orders.IdOrder,
-                    productId = cart[i].Idproduct,
+                    productId = cart[i].ProductIdProduct,
                    
                 };
                 sum += cart[i].CostOrder;
@@ -97,7 +117,7 @@ namespace AutoShops.Repositories
             orders.CostOrder = sum;
             _context.SaveChanges();
 
-            //_cartRepositories.FullRemoveCart();
+            _cartRepositories.FullRemoveCart();
 
             return orders;
         }

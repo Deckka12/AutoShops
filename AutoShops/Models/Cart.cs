@@ -28,8 +28,8 @@ namespace AutoShops.Models
         /// <summary>
         /// Ид товара
         /// </summary>
-        public int Idproduct { get; set; }
-        [ForeignKey(nameof(Idproduct))]
-        public Product product { get; set; }
+        public int ProductIdProduct { get; set; }
+        [ForeignKey(nameof(ProductIdProduct))]
+        public virtual Product Product { get; set; }
     }
 }

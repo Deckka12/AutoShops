@@ -34,17 +34,17 @@ namespace AutoShops.Models {
         /// <summary>
         /// Ид категории
         /// </summary>
-        public int IdCategory { get; set; }
+        public int CategoryID { get; set; }
         /// <summary>
         /// Количество товара в магазине
         /// </summary>
         public int Count { get; set; }
-        [ForeignKey(nameof(IdCategory))]
-        public Category CategoryID { get; set; }
-        public List<Cart> Cart { get; set; } = new List<Cart>();
+        [ForeignKey(nameof(CategoryID))]
+        public virtual Category Category { get; set; }
+        public virtual List<Cart> Cart { get; set; } = new List<Cart>();
 
-        public List<Storage> storages { get; set; } = new List<Storage>();
-        public List<ProductOrder> productOrders { get; set; } = new List<ProductOrder>();
+        public virtual List<Storage> Storage { get; set; } = new List<Storage>();
+        public virtual List<ProductOrder> ProductOrder { get; set; } = new List<ProductOrder>();
 
     }
 }

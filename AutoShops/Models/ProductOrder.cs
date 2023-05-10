@@ -33,7 +33,7 @@ namespace AutoShops.Models {
         /// навигационное свойство заказа
         /// </summary>
         [ForeignKey(nameof(OrderId))]
-        public Order? order { get; set; }
+        public virtual Order? order { get; set; }
         /// <summary>
         /// Внешний ключ товар
         /// </summary>
@@ -43,7 +43,7 @@ namespace AutoShops.Models {
         /// навигационное свойство заказа
         /// </summary>
         [ForeignKey(nameof(productId))]
-        public Product? product { get; set; }
+        public virtual Product? product { get; set; }
 
 
     }

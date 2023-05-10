@@ -10,6 +10,11 @@ namespace AutoShops.Repositories
    
     public class ClientRepositories
     {
+        /// <summary>
+        /// Поиск клиента
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public Clients Search (Clients client) {
             using(var context = new Context())
             {
@@ -17,6 +22,11 @@ namespace AutoShops.Repositories
             }
         }
 
+        /// <summary>
+        /// Добавление клиента
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public Clients AddClient (Clients client) {
             using(var db = new Context())
             {

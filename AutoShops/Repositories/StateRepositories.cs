@@ -9,6 +9,11 @@ namespace AutoShops.Repositories
 {
     public class StateRepositories
     {
+        /// <summary>
+        /// Вывод состояния
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public StateOrder viewState(string name) {
             using(var _context = new Context())
                 return ContextRun.Context().StateOrder.Where(x => x.Name.Equals(name)).FirstOrDefault();

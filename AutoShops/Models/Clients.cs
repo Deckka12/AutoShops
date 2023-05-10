@@ -39,7 +39,7 @@ namespace AutoShops.Models
         /// </summary>
         public string Email { get; set; }
 
-        public List<Order> Order { get; set; }
+        public virtual List<Order> Order { get; set; }
 
     }
 }

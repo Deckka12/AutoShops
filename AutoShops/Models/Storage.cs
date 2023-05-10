@@ -16,6 +16,6 @@ namespace AutoShops.Models
         public int Count { get; set; }
         public int IDproduct { get; set; }
         [ForeignKey(nameof(IDproduct))]
-        public Product product { get; set; }
+        public virtual Product product { get; set; }
     }
 }

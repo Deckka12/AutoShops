@@ -15,6 +15,9 @@ namespace AutoShops.Models
         public string NameCategory { get; set; }
 
         // Навигационное свойство
-        public List<Product> Users { get; set; } = new List<Product>();
+        public virtual ICollection<Product> Product { get; set; }
+        public Category () {
+            Product = new List<Product> ();
+        }
     }
 }

@@ -12,6 +12,6 @@ namespace AutoShops.Models
         [Key]
         public int IdState { get; set; }
         public string Name { get; set; }
-        public List<Order> Order { get; set; }
+        public virtual List<Order> Order { get; set; }
     }
 }

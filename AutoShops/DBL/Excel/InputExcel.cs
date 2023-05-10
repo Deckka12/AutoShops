@@ -9,6 +9,10 @@ namespace AutoShops.DBL.Excel
 {
     public static class InputExcel
     {
+        /// <summary>
+        /// Выгрузить в Excel
+        /// </summary>
+        /// <param name="dataGridView1"></param>
         public static void Input (DataGridView dataGridView1) {
             string fileCSV = "";
             SaveFileDialog saveFileDialog = new SaveFileDialog();

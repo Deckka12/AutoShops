@@ -9,15 +9,15 @@ namespace AutoShops.Repositories
 {
     public class CategoryRepositories
     {
-        Context _context;
         public CategoryRepositories () {
-            _context = ContextRun.Context();
+            
         }
         /// <summary>
         /// Вывод категории
         /// </summary>
         /// <param name="account"></param>
         public List<Category>  ShowCategories () {
+            using(var _context = new Context())
                 return _context.Category.ToList();
         }
         /// <summary>
@@ -25,20 +25,54 @@ namespace AutoShops.Repositories
         /// </summary>
         /// <param name="account"></param>
         public string ShowCategoriesKey (int id) {
-            return _context.Category.Where(x => x.Id == id).FirstOrDefault().NameCategory;
+            using(var _context = new Context())
+                return _context.Category.Where(x => x.Id == id).FirstOrDefault().NameCategory;
         }
         /// <summary>
         /// Вывод Ид категории  по имени
         /// </summary>
         /// <param name="account"></param>
         public int ShowCategorID (string name) {
-            return _context.Category.Where(x => x.NameCategory == name).FirstOrDefault().Id;
+            using(var _context = new Context())
+                return _context.Category.Where(x => x.NameCategory == name).FirstOrDefault().Id;
         }
 
-       
+       /// <summary>
+       /// Показать категорию по ид
+       /// </summary>
+       /// <param name="ID"></param>
+       /// <returns></returns>
         public string ShowCategorName (int ID) {
-            return _context.Category.Where(x => x.Id == ID).FirstOrDefault().NameCategory;
+            using(var _context = new Context())
+                return _context.Category.Where(x => x.Id == ID).FirstOrDefault().NameCategory;
         }
+
+        /// <summary>
+        /// Редактирование категории
+        /// </summary>
+        /// <param name="old"></param>
+        /// <param name="news"></param>
+        public void EditCategory (Category old, Category news) {
+            using(var _context = new Context())
+            {
+                var neCat = _context.Category.Where(x => x.NameCategory == old.NameCategory).FirstOrDefault();
+                neCat.NameCategory = news.NameCategory;
+                _context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Добавление категории
+        /// </summary>
+        /// <param name="news"></param>
+        public void AddCategory  (Category news) {
+            using(var _context = new Context())
+            {
+               _context.Category.Add(news);
+                _context.SaveChanges();
+            }
+        }
+
 
     }
 }

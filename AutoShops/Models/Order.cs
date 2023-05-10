@@ -37,12 +37,12 @@ namespace AutoShops.Models {
         [Column("ClientId", Order = 0)]
         public int ClientsId { get; set; }
         [ForeignKey(nameof(ClientsId))]
-        public Clients Clients { get; set; }
+        public virtual Clients Clients { get; set; }
         
         /// <summary>
         /// Навигационное свойство товаров
         /// </summary>
-        public List<ProductOrder> ItemsOrder { get; set; } = new List<ProductOrder>();
+        public virtual List<ProductOrder> ItemsOrder { get; set; } = new List<ProductOrder>();
         /// <summary>
         /// Ид состояния
         /// </summary>
@@ -50,7 +50,7 @@ namespace AutoShops.Models {
         [Column(Order = 1)]
         public int StateOrderId { get; set; }
         [ForeignKey(nameof(StateOrderId))]
-        public StateOrder StateOrder { get; set; }
+        public virtual StateOrder StateOrder { get; set; }
 
     }
 }

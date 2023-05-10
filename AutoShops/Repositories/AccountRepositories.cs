@@ -146,7 +146,11 @@ namespace AutoShops.Repositories {
                 return db.Accounts.ToList();
             }
         }
-
+        /// <summary>
+        /// Получить аккаунт по ФИО
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         public Account GetAccount(string Name) {
             using(var db = new Context())
             {

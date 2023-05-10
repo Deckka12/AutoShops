@@ -14,7 +14,12 @@ namespace AutoShops.DBL.SMTP
 {
     public static class SendMail
     {
-        
+        /// <summary>
+        /// Отправка сообщения по заказу
+        /// </summary>
+        /// <param name="Email"></param>
+        /// <param name="order"></param>
+        /// <param name="cart"></param>
         public static void Send (string Email, Order order, List<Cart> cart) {
             SendEmailAsync(Email,order, cart).GetAwaiter();
         }
@@ -29,7 +34,7 @@ namespace AutoShops.DBL.SMTP
             m.Body = $"<h2>Заказ №{order.NumberOrder} успешно создан. </h2>\r\n<h4> Товары заказа:</h4>\r\n<table border=1px >\r\n<tr><th>Название</th><th>Цена</th><th>Количество</th></tr>";
             foreach(Cart cartItem in cart)
             {
-                m.Body += $"<tr><td>{orderRepositories.ShowOrders().FirstOrDefault(x => x.IdProduct == cartItem.Idproduct).Name}</td><td>{cartItem.CostOrder}</td><td>{cartItem.Count}</td></tr>";
+                m.Body += $"<tr><td>{orderRepositories.ShowOrders().FirstOrDefault(x => x.IdProduct == cartItem.ProductIdProduct).Name}</td><td>{cartItem.CostOrder}</td><td>{cartItem.Count}</td></tr>";
                 total += cartItem.CostOrder;
             }
             m.Body += $"\r\n    <tr>\r\n      <th  colspan=\"1\" border=0px text-align=right>Итого :</th>\r\n      <td>{total}</td>\r\n    </tr>\r\n   \r\n</table>";

@@ -28,7 +28,7 @@ namespace AutoShops.Forms
             pictureBox1.Image = Image.FromStream(stream);
             KeyName.Text = _product.Name;
             KeyPrice.Text = _product.Price.ToString();
-            CategoryKey.Text = _categoryRepositories.ShowCategoriesKey( _product.IdCategory);
+            CategoryKey.Text = _categoryRepositories.ShowCategoriesKey( _product.CategoryID);
             CommentsKey.Text = _product.Comment;
             this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }

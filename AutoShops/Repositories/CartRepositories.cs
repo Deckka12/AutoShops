@@ -24,12 +24,17 @@ namespace AutoShops.Repositories
                 return _context.Cart.ToList();
             }
         }
+        /// <summary>
+        /// Добавить товар
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="state"></param>
         public async void AddCart ( Product product, bool state) {
             using(var _context = new Context())
             {
-                if(_context.Cart.Any(x => x.Idproduct == product.IdProduct))
+                if(_context.Cart.Any(x => x.ProductIdProduct == product.IdProduct))
                 {
-                    var cart = _context.Cart.Where(x => x.Idproduct == product.IdProduct);
+                    var cart = _context.Cart.Where(x => x.ProductIdProduct == product.IdProduct);
                     cart.FirstOrDefault().Count += 1;
                     cart.FirstOrDefault().CostOrder += product.Price;
                     cart.FirstOrDefault().IsNotCountShop = state;
@@ -39,7 +44,7 @@ namespace AutoShops.Repositories
                 {
                     var cart = new Cart
                     {
-                        Idproduct = product.IdProduct,
+                        ProductIdProduct = product.IdProduct,
                         Count = 1,
                         CostOrder = product.Price,
                         IsNotCountShop = state
@@ -49,22 +54,31 @@ namespace AutoShops.Repositories
                 }
             }
         }
-
+        /// <summary>
+        /// Увеличичть количество товара
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="count"></param>
+        /// <param name="state"></param>
         public async void PlusCount ( Product product, int count, bool state) {
             using(var _context = new Context())
             {
-                var cart = _context.Cart.Where(x => x.Idproduct == product.IdProduct);
+                var cart = _context.Cart.Where(x => x.ProductIdProduct == product.IdProduct);
                 cart.FirstOrDefault().Count += count;
                 cart.FirstOrDefault().CostOrder += product.Price * count;
                 cart.FirstOrDefault().IsNotCountShop = state;
                await _context.SaveChangesAsync();
             }
         }
-
+        /// <summary>
+        /// Очистить корзину на н-элемнтов
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="count"></param>
         public async void RemoveCart ( Product product, int count) {
             using(var _context = new Context())
             {
-                var cart = _context.Cart.Where(x => x.Idproduct == product.IdProduct);
+                var cart = _context.Cart.Where(x => x.ProductIdProduct == product.IdProduct);
                 if(count == 0 || count == null)
                 {
                     _context.Cart.Remove(cart.FirstOrDefault());
@@ -76,6 +90,9 @@ namespace AutoShops.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        /// <summary>
+        /// Полностью очистить корзину
+        /// </summary>
         public async void FullRemoveCart () {
             using(var _context = new Context())
             {
