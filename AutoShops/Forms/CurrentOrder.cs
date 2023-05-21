@@ -19,10 +19,11 @@ namespace AutoShops.Forms
         public CurrentOrder () {
             InitializeComponent();
         }
-
+        OrderRepositories repositories = new OrderRepositories();
         private void CurrentOrder_Load (object sender, EventArgs e) {
             formLoad.FillOrders(dataGridView1);
             formLoad.FillComboBoxState(StateOrder);
+            formLoad.DesignDataGridView(dataGridView1);
         }
 
         private void dataGridView1_CellContentClick (object sender, DataGridViewCellEventArgs e) {
@@ -46,6 +47,10 @@ namespace AutoShops.Forms
                 InputExcel.Input(dataGridView1);
             else
                 MessageBox.Show("Нет данных для вывода");
+        }
+
+        private void Filtered_Click (object sender, EventArgs e) {
+            formLoad.FillOrdersFiltered(dataGridView1, repositories.FilteredOrders(dateTimePicker1.Value.Date,dateTimePicker2.Value.Date));
         }
     }
 }

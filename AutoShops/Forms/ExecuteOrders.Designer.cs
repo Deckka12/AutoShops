@@ -57,10 +57,10 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.ItemsOrders.Location = new System.Drawing.Point(0, 48);
+            this.ItemsOrders.Location = new System.Drawing.Point(0, 22);
             this.ItemsOrders.Name = "ItemsOrders";
             this.ItemsOrders.RowTemplate.Height = 25;
-            this.ItemsOrders.Size = new System.Drawing.Size(393, 270);
+            this.ItemsOrders.Size = new System.Drawing.Size(393, 296);
             this.ItemsOrders.TabIndex = 0;
             this.ItemsOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 

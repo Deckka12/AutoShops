@@ -32,12 +32,14 @@ namespace AutoShops
         Product OldProduct;
         Category oldCategoty;
         CartRepositories cartRepositories = new CartRepositories();
+
         private void Client_Load (object sender, EventArgs e) {
             ViewParts_Click(sender, e);
             ViewParts.BackColor = Color.DeepSkyBlue;
             defaultBackColor = OrdersParts.BackColor;
-            form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1, button1, ViewExcel, RemoveProduct, AddCat, EditCate);
+            form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1, button1, ViewExcel, RemoveProduct, AddCat, EditCate,ControlClient);
             ViewProduct.ReadOnly = true;
+            form.DesignDataGridView(ViewProduct);
         }
         private void ButtonColor (object sender, EventArgs e) {
             ViewParts.GotFocus += (sender, e) => { ViewParts.BackColor = Color.DeepSkyBlue; };
@@ -121,20 +123,28 @@ namespace AutoShops
 
         private void ViewProduct_SelectionChanged (object sender, EventArgs e) {
             ProductRepositories productRepositories = new ProductRepositories();
-
-            int selectedRowCount = ViewProduct.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            if(selectedRowCount > 0)
+            try
             {
-                OldProduct = null;
-                OldProduct = productRepositories.ShowOrdersName(ViewProduct.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
-                if(OldProduct != null)
+                int selectedRowCount = ViewProduct.Rows.GetRowCount(DataGridViewElementStates.Selected);
+                if(selectedRowCount > 0)
                 {
-                    NameProduct.Text = OldProduct.Name;
-                    PriceProduct.Text = OldProduct.Price.ToString();
-                    CommentProduct.Text = OldProduct.Comment;
-                    CategoryProduct.SelectedItem = CategoryRepositories.ShowCategorName(OldProduct.CategoryID);
+                    OldProduct = null;
+                    OldProduct = productRepositories.ShowOrdersName(ViewProduct.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault();
+                    if(OldProduct != null)
+                    {
+                        NameProduct.Text = OldProduct.Name;
+                        PriceProduct.Text = OldProduct.Price.ToString();
+                        CommentProduct.Text = OldProduct.Comment;
+                        CategoryProduct.SelectedItem = CategoryRepositories.ShowCategorName(OldProduct.CategoryID);
+                    }
                 }
+
             }
+            catch
+            {
+                MessageBox.Show("Нет данных для выбора");
+            }
+            
         }
 
         private void EditProduct_Click (object sender, EventArgs e) {
@@ -198,7 +208,7 @@ namespace AutoShops
                 {
                     Name = ViewProduct.SelectedRows[0].Cells[0].Value.ToString(),
                     Price = decimal.Parse(ViewProduct.SelectedRows[0].Cells[2].Value.ToString()),
-                   
+
                 };
                 orders.RemoveProduct(product);
                 form.FillDataGrid(ViewProduct, orders.ShowOrders());
@@ -228,6 +238,11 @@ namespace AutoShops
             };
             CategoryRepositories.AddCategory(NewCat);
             ViewParts_Click(sender, e);
+        }
+
+        private void ControlClient_Click (object sender, EventArgs e) {
+            ControlCLient cl = new ControlCLient();
+            cl.Show();
         }
     }
 }

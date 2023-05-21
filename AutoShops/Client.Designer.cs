@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent () {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ThisOrder = new System.Windows.Forms.Button();
             this.RemoveAddEmpl = new System.Windows.Forms.Button();
             this.ViewParts = new System.Windows.Forms.Button();
@@ -58,6 +59,7 @@
             this.EditCate = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.CatName = new System.Windows.Forms.ComboBox();
+            this.ControlClient = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewProduct)).BeginInit();
             this.Filtered.SuspendLayout();
@@ -130,6 +132,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.ControlClient);
             this.panel1.Controls.Add(this.Cart);
             this.panel1.Controls.Add(this.ThisOrder);
             this.panel1.Controls.Add(this.RemoveAddEmpl);
@@ -164,6 +167,15 @@
             this.NameItem,
             this.Category,
             this.Price});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ViewProduct.DefaultCellStyle = dataGridViewCellStyle2;
             this.ViewProduct.Location = new System.Drawing.Point(256, 134);
             this.ViewProduct.Margin = new System.Windows.Forms.Padding(0);
             this.ViewProduct.Name = "ViewProduct";
@@ -440,6 +452,19 @@
             this.CatName.TabIndex = 7;
             this.CatName.SelectedIndexChanged += new System.EventHandler(this.CatName_SelectedIndexChanged);
             // 
+            // ControlClient
+            // 
+            this.ControlClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ControlClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ControlClient.Location = new System.Drawing.Point(-4, 432);
+            this.ControlClient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ControlClient.Name = "ControlClient";
+            this.ControlClient.Size = new System.Drawing.Size(252, 69);
+            this.ControlClient.TabIndex = 6;
+            this.ControlClient.Text = "Управление клиентами";
+            this.ControlClient.UseVisualStyleBackColor = true;
+            this.ControlClient.Click += new System.EventHandler(this.ControlClient_Click);
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -503,5 +528,6 @@
         private Button EditCate;
         private Label label7;
         private ComboBox CatName;
+        private Button ControlClient;
     }
 }

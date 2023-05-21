@@ -121,5 +121,10 @@ namespace AutoShops.Repositories
 
             return orders;
         }
+        public List<Order> FilteredOrders(DateTime dateTimeFrom, DateTime dateTimeTo) {
+ 
+               return _context.Order.Include(x => x.StateOrder).Where(x => x.OrderDate >= dateTimeFrom && x.OrderDate <= dateTimeTo).ToList();
+
+        }
     }
 }

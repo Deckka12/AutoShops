@@ -16,6 +16,7 @@ namespace AutoShops.DBL
         CategoryRepositories categoryRepositories = new CategoryRepositories();
         InformationAccounts informationAccounts = new InformationAccounts();
         ProductRepositories orderRepositories = new ProductRepositories();
+        ClientRepositories clientRepositories = new ClientRepositories();
 
         public FormLoad () {
             _context = ContextRun.Context();
@@ -48,7 +49,7 @@ namespace AutoShops.DBL
         /// <param name="remove"></param>
         /// <param name="Edit"></param>
         /// <param name="addCat"></param>
-        public void FillControls (Button RemoveAddEmpl, Button ThisOrder, Button editProduct, GroupBox comboBox, Button add, Button excel, Button remove, Button Edit, Button addCat) {
+        public void FillControls (Button RemoveAddEmpl, Button ThisOrder, Button editProduct, GroupBox comboBox, Button add, Button excel, Button remove, Button Edit, Button addCat, Button controlClient) {
             if(!informationAccounts.IsAvailable)
             {
                 RemoveAddEmpl.Visible = false;
@@ -60,7 +61,7 @@ namespace AutoShops.DBL
                 remove.Visible = false;
                 Edit.Visible = false;
                 addCat.Visible = false;
-
+                controlClient.Visible = false;
             }
         }
 
@@ -147,6 +148,47 @@ namespace AutoShops.DBL
                 }
             }
         }
+        public void DesignDataGridView (DataGridView dataGridView1) {
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(153, 180, 209);
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dataGridView1.BackgroundColor = Color.White;
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSlateGray;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+        }
+
+        /// <summary>
+        /// вывод заказа по фильтрам
+        /// </summary>
+        /// <param name="dataGridView1"></param>
+        public void FillOrdersFiltered (DataGridView dataGridView1,List<Order> orders) {
+            OrderRepositories repositories = new OrderRepositories();
+            if(dataGridView1.Rows.Count > 0)
+                dataGridView1.Rows.Clear();
+
+            int i = 0;
+            int dtCount = 0;
+            for(; i < orders.Count; i++)
+            {
+                for(int j = 0; j < orders[i].ItemsOrder.Count; j++)
+                {
+                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows[dtCount].Cells[0].Value = orders[i].NumberOrder;
+                    dataGridView1.Rows[dtCount].Cells[1].Value = orders[i].OrderDate;
+                    dataGridView1.Rows[dtCount].Cells[2].Value = orders[i].ItemsOrder[j].Sum;//items[j].Sum;
+                    dataGridView1.Rows[dtCount].Cells[3].Value = orders[i].DateDeliveri;
+                    dataGridView1.Rows[dtCount].Cells[4].Value = orders[i].StateOrder.Name;
+                    dataGridView1.Rows[dtCount].Cells[5].Value = orders[i].ItemsOrder[j].product.Name;
+                    dataGridView1.Rows[dtCount].Cells[6].Value = orders[i].ItemsOrder[j].Count;
+                    dtCount++;
+                }
+            }
+        }
 
         /// <summary>
         /// Заполнение состояний
@@ -196,6 +238,27 @@ namespace AutoShops.DBL
                 dataGridView1.Rows[i].Cells[0].Value = account[i].Name;
                 dataGridView1.Rows[i].Cells[1].Value = account[i].Login;
                 dataGridView1.Rows[i].Cells[2].Value = account[i].Administration;
+            }
+        }
+
+        public void ShowCLient(DataGridView dataGridView) {
+            FillDataGridClient(dataGridView, clientRepositories.ShowClient());
+        }
+        /// <summary>
+        /// Заполнение таблицы клиентов
+        /// </summary>
+        /// <param name="dataGridView1">Форма заполненеия грид</param>
+        /// <param name="account">Модель Аккаунта</param>
+        public void FillDataGridClient (DataGridView dataGridView1, List<Clients> clients) {
+            if(dataGridView1.Rows.Count > 0)
+                dataGridView1.Rows.Clear();
+            for(int i = 0; i < clients.Count; i++)
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = clients[i].FirstName + " "+ clients[i].Name + " " + clients[i].MiddleName;
+                dataGridView1.Rows[i].Cells[1].Value = clients[i].Addres;
+                dataGridView1.Rows[i].Cells[2].Value = clients[i].Phone;
+                dataGridView1.Rows[i].Cells[3].Value = clients[i].Email;
             }
         }
     }

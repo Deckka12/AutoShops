@@ -19,7 +19,8 @@ namespace AutoShops {
             InitializeComponent();
         }
         Context db = new Context ();
-        AccountRepositories repository = new AccountRepositories ();  
+        AccountRepositories repository = new AccountRepositories ();
+        Client clinet = new Client();
         private void Main_Load (object sender, EventArgs e) {
 
             //TestCategory(db);
@@ -139,42 +140,17 @@ namespace AutoShops {
                 cl.ShowDialog();
                 if(repository.CheckInput())
                 {
-                    Client clinet = new Client();
                     clinet.Show();
                 }
             }
             else
             {
-                Client client = new Client();
-                client.ShowDialog();
+                clinet.Show();
             }
         }
 
         private void button3_Click (object sender, EventArgs e) {
-            // Create a new instance of the form.
-            Form form1 = new Form();
-            
-            Button button1 = new Button();
-            Button button2 = new Button();
-
-          
-            button1.Text = "OK";
-            button1.Location = new Point(10, 10);
-            button2.Text = "Cancel";
-            button2.Location
-               = new Point(button1.Left, button1.Height + button1.Top + 10);
-            form1.Text = "My Dialog Box";
-            button1.Click += Directory_Click;
-
-            // Add button1 to the form.
-            form1.Controls.Add(button1);
-            // Add button2 to the form.
-            form1.Controls.Add(button2);
-
-            // Display the form as a modal dialog box.
-            form1.ShowDialog();
-
-
+        
         }
 
         private void Main_FormClosed (object sender, FormClosedEventArgs e) {

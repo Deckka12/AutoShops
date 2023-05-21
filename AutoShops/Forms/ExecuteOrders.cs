@@ -20,6 +20,7 @@ namespace AutoShops.Forms
             InitializeComponent();
         }
         FormLoadCart cart = new FormLoadCart ();
+        FormLoad load = new FormLoad();
         OrderRepositories OrderRepositories = new OrderRepositories ();
         private void dataGridView1_CellContentClick (object sender, DataGridViewCellEventArgs e) {
 
@@ -28,6 +29,7 @@ namespace AutoShops.Forms
         private void ExecuteOrders_Load (object sender, EventArgs e) {
             cart.FillCart(ItemsOrders);
             ItemsOrders.ReadOnly = true;
+            load.DesignDataGridView(ItemsOrders);
         }
 
         private void button1_Click (object sender, EventArgs e) {

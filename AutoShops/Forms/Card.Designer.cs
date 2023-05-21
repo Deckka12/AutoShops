@@ -47,7 +47,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(344, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(374, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // NameProduct
@@ -68,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(363, 8);
+            this.label1.Location = new System.Drawing.Point(415, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 15);
             this.label1.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(444, 5);
+            this.textBox1.Location = new System.Drawing.Point(496, 6);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(41, 23);
             this.textBox1.TabIndex = 2;
@@ -85,7 +85,7 @@
             // EditCount
             // 
             this.EditCount.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.EditCount.Location = new System.Drawing.Point(363, 34);
+            this.EditCount.Location = new System.Drawing.Point(415, 35);
             this.EditCount.Name = "EditCount";
             this.EditCount.Size = new System.Drawing.Size(122, 23);
             this.EditCount.TabIndex = 3;
@@ -96,7 +96,7 @@
             // Remove
             // 
             this.Remove.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Remove.Location = new System.Drawing.Point(362, 63);
+            this.Remove.Location = new System.Drawing.Point(414, 64);
             this.Remove.Name = "Remove";
             this.Remove.Size = new System.Drawing.Size(123, 23);
             this.Remove.TabIndex = 4;
@@ -108,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 162);
+            this.ClientSize = new System.Drawing.Size(546, 162);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.EditCount);
             this.Controls.Add(this.textBox1);

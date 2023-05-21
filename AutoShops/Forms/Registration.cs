@@ -44,6 +44,7 @@ namespace AutoShops.Forms
 
         private void Registration_Load (object sender, EventArgs e) {
             form.SelectedAccount(dataGridView1);
+            form.DesignDataGridView(dataGridView1);
         }
 
         private void dataGridView1_SelectionChanged (object sender, EventArgs e) {

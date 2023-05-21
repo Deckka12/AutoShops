@@ -7,6 +7,7 @@ namespace AutoShops.Forms
     public partial class Card : Form
     {
         FormLoadCart load = new FormLoadCart();
+        FormLoad loads = new FormLoad();
         CartRepositories cartRepositories = new CartRepositories();
         Context _context ;
         ProductRepositories orders = new ProductRepositories();
@@ -45,6 +46,7 @@ namespace AutoShops.Forms
         private void Card_Load (object sender, EventArgs e) {
             load.FillCart(dataGridView1);
             dataGridView1.ReadOnly = true;
+            loads.DesignDataGridView(dataGridView1);
         }
 
         private void textBox1_TextChanged (object sender, EventArgs e) {

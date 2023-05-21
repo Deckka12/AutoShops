@@ -38,7 +38,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.EditStateOrder = new System.Windows.Forms.Button();
             this.ImportExcel = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Filtered = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -97,7 +106,7 @@
             // StateOrder
             // 
             this.StateOrder.FormattingEnabled = true;
-            this.StateOrder.Location = new System.Drawing.Point(876, 25);
+            this.StateOrder.Location = new System.Drawing.Point(115, 22);
             this.StateOrder.Name = "StateOrder";
             this.StateOrder.Size = new System.Drawing.Size(121, 23);
             this.StateOrder.TabIndex = 1;
@@ -105,7 +114,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(767, 28);
+            this.label1.Location = new System.Drawing.Point(6, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 15);
             this.label1.TabIndex = 2;
@@ -114,7 +123,7 @@
             // EditStateOrder
             // 
             this.EditStateOrder.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.EditStateOrder.Location = new System.Drawing.Point(767, 72);
+            this.EditStateOrder.Location = new System.Drawing.Point(6, 69);
             this.EditStateOrder.Name = "EditStateOrder";
             this.EditStateOrder.Size = new System.Drawing.Size(230, 35);
             this.EditStateOrder.TabIndex = 3;
@@ -125,7 +134,7 @@
             // ImportExcel
             // 
             this.ImportExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ImportExcel.Location = new System.Drawing.Point(767, 113);
+            this.ImportExcel.Location = new System.Drawing.Point(6, 110);
             this.ImportExcel.Name = "ImportExcel";
             this.ImportExcel.Size = new System.Drawing.Size(230, 34);
             this.ImportExcel.TabIndex = 4;
@@ -133,22 +142,93 @@
             this.ImportExcel.UseVisualStyleBackColor = false;
             this.ImportExcel.Click += new System.EventHandler(this.ImportExcel_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.EditStateOrder);
+            this.groupBox1.Controls.Add(this.ImportExcel);
+            this.groupBox1.Controls.Add(this.StateOrder);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(751, 160);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(254, 158);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Изменение/экспорт";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.Filtered);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Location = new System.Drawing.Point(751, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(254, 141);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Фильтр";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(91, 22);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(163, 23);
+            this.dateTimePicker1.TabIndex = 0;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(91, 51);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(163, 23);
+            this.dateTimePicker2.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Дата с";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Дата по";
+            // 
+            // Filtered
+            // 
+            this.Filtered.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Filtered.Location = new System.Drawing.Point(15, 90);
+            this.Filtered.Name = "Filtered";
+            this.Filtered.Size = new System.Drawing.Size(230, 35);
+            this.Filtered.TabIndex = 5;
+            this.Filtered.Text = "Применить фильтр";
+            this.Filtered.UseVisualStyleBackColor = false;
+            this.Filtered.Click += new System.EventHandler(this.Filtered_Click);
+            // 
             // CurrentOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 608);
-            this.Controls.Add(this.ImportExcel);
-            this.Controls.Add(this.EditStateOrder);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.StateOrder);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "CurrentOrder";
             this.Text = "CurrentOrder";
             this.Load += new System.EventHandler(this.CurrentOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -166,5 +246,12 @@
         private Label label1;
         private Button EditStateOrder;
         private Button ImportExcel;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private Button Filtered;
+        private Label label3;
+        private Label label2;
+        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePicker1;
     }
 }

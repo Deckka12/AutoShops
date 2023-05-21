@@ -4,8 +4,10 @@ using System.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace AutoShops {
-    public class Context : DbContext {
+namespace AutoShops
+{
+    public class Context : DbContext
+    {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Cart> Cart { get; set; }
         public DbSet<Category> Category { get; set; }
@@ -18,8 +20,8 @@ namespace AutoShops {
 
 
         public Context () {
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            // Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
@@ -27,7 +29,7 @@ namespace AutoShops {
             optionsBuilder.ConfigureWarnings(w => w.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning));
 
         }
-        
+
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             if(modelBuilder == null)
                 throw new ArgumentNullException("modelBuilder");
@@ -36,7 +38,7 @@ namespace AutoShops {
 
             //   modelBuilder.Entity<Order>().Property(o => o.StateOrderId)
             //       .HasColumnOrder(1);
-            
+
             foreach(var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 entityType.SetTableName(entityType.DisplayName());
