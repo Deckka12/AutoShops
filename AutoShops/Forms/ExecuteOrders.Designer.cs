@@ -227,7 +227,7 @@
             this.ClientSize = new System.Drawing.Size(643, 332);
             this.Controls.Add(this.InfoCLient);
             this.Controls.Add(this.ItemOrder);
-            this.Text = "ExecuteOrders";
+           // this.Name = "ExecuteOrderssss";
             this.Load += new System.EventHandler(this.ExecuteOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ItemsOrders)).EndInit();
             this.ItemOrder.ResumeLayout(false);

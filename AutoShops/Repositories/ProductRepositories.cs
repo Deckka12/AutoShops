@@ -11,6 +11,7 @@ namespace AutoShops.Repositories
 {
     public class ProductRepositories
     {
+        Context _context = new Context();
         public ProductRepositories () {
 
         }
@@ -20,11 +21,9 @@ namespace AutoShops.Repositories
         /// </summary>
         /// <returns></returns>
         public List<Product> ShowOrders () {
-            using(var _context = new Context())
-            {
-    
+
                 return _context.Product.Include(x=>x.Category).ToList();
-            }
+
               
         }
 
@@ -34,7 +33,7 @@ namespace AutoShops.Repositories
         /// <param name="name"></param>
         /// <returns></returns>
         public List<Product> ShowOrdersCategory (string name) {
-            using(var _context = new Context())
+
                 return _context.Product.Include(x => x.Category).Where(x => x.CategoryID == categoryRepositories.ShowCategorID(name)).ToList();
         }
         /// <summary>
@@ -43,10 +42,15 @@ namespace AutoShops.Repositories
         /// <param name="name"></param>
         /// <returns></returns>
         public List<Product> ShowOrdersName (string name) {
-            using(var _context = new Context())
-                return _context.Product.Include(x => x.Category).Where(x => x.Name.Contains(name)).ToList();
+
+                return _context.Product.Include(x => x.Category).Where(x => x.Name == name).ToList();
         }
-     
+        public List<Product> ShowOrdersContainsNameOrArticle (string name) {
+            if(_context.Product.Include(x => x.Category).Where(x => x.Name.Contains(name)).Count()>0)
+                return _context.Product.Include(x => x.Category).Where(x => x.Name.Contains(name)).ToList();
+            else
+                return _context.Product.Include(x => x.Category).Where(x => x.Articl.Contains(name)).ToList();
+        }
         /// <summary>
         /// Вывод количества опредленного товара
         /// </summary>
@@ -54,13 +58,13 @@ namespace AutoShops.Repositories
         /// <param name="count"></param>
         /// <returns></returns>
         public Product ShowOrdersNameCount (string name, int count) {
-            using(var _context = new Context())
-            {
+
+            
                 if(_context.Product.Where(x => x.Name.Contains(name) && x.Count >= count).Count() == 1)
                     return _context.Product.Where(x => x.Name.Contains(name)).FirstOrDefault();
                 else
                     return null;
-            }
+            
 
         }
         /// <summary>
@@ -69,15 +73,14 @@ namespace AutoShops.Repositories
         /// <param name="old"></param>
         /// <param name="newProduct"></param>
         public void EditProduct (Product old, Product newProduct) {
-            using(var _context = new Context())
-            {
+
                 old = _context.Product.Where(x => x.Name == old.Name).FirstOrDefault();
                 old.Price = newProduct.Price;
                 old.CategoryID = newProduct.CategoryID;
                 old.Name = newProduct.Name;
                 old.Comment = newProduct.Comment;
                 _context.SaveChangesAsync();
-            }
+
         }
 
         /// <summary>
@@ -86,8 +89,7 @@ namespace AutoShops.Repositories
         /// <param name="product"></param>
         /// <exception cref="Exception"></exception>
         public void AddProduct (Product product) {
-            using(var _context = new Context())
-            {
+
                 if(_context.Product.Any(x => x.Name == product.Name && x.Price == product.Price))
                     throw new Exception("Товар с таким наименоованием и ценной существует");
                 else
@@ -95,19 +97,18 @@ namespace AutoShops.Repositories
                     _context.Product.Add(product);
                     _context.SaveChangesAsync();
                 }
-            }
+
         }
         /// <summary>
         /// Удаление товара
         /// </summary>
         /// <param name="product"></param>
         public void RemoveProduct (Product product) {
-            using(var _context = new Context())
-            {
+
                 var remove = _context.Product.Where(x => x.Name == product.Name && x.Price == product.Price).FirstOrDefault();
                 _context.Remove(remove);
                 _context.SaveChanges();
-            }
+
         }
     }
 

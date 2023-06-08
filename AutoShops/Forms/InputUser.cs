@@ -17,11 +17,15 @@ namespace AutoShops.Forms
             InitializeComponent();
         }
         AccountRepositories account = new AccountRepositories();
-
+        public bool returnValue { get; set; }
         private void InputButton_Click (object sender, EventArgs e) {
             var input = account.InputAccaunt(textBox1.Text, textBox2.Text);
             if(input != null)
-            { 
+            {
+                // Устанавливаем значение, которое мы хотим вернуть
+                returnValue = input.Administration;
+                // Устанавливаем свойство DialogResult
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else

@@ -143,7 +143,6 @@
             this.Controls.Add(this.Information);
             this.Controls.Add(this.pictureBox1);
             this.Name = "InfoProduct";
-            this.Text = "InfoProduct";
             this.Load += new System.EventHandler(this.InfoProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Information.ResumeLayout(false);

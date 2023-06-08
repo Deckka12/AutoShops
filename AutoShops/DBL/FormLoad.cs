@@ -49,20 +49,17 @@ namespace AutoShops.DBL
         /// <param name="remove"></param>
         /// <param name="Edit"></param>
         /// <param name="addCat"></param>
-        public void FillControls (Button RemoveAddEmpl, Button ThisOrder, Button editProduct, GroupBox comboBox, Button add, Button excel, Button remove, Button Edit, Button addCat, Button controlClient) {
-            if(!informationAccounts.IsAvailable)
-            {
-                RemoveAddEmpl.Visible = false;
-                ThisOrder.Visible = false;
-                editProduct.Visible = false;
-                comboBox.Enabled = false;
-                add.Visible = false;
-                excel.Visible = false;
-                remove.Visible = false;
-                Edit.Visible = false;
-                addCat.Visible = false;
-                controlClient.Visible = false;
-            }
+        public void FillControls (Button RemoveAddEmpl, Button ThisOrder, Button editProduct, GroupBox comboBox, Button add, Button excel, Button remove, Button Edit, Button addCat, Button controlClient, bool isFlag) {
+                RemoveAddEmpl.Visible = isFlag;
+                ThisOrder.Visible = isFlag;
+                editProduct.Visible = isFlag;
+                comboBox.Enabled = isFlag;
+                add.Visible = isFlag;
+                excel.Visible = isFlag;
+                remove.Visible = isFlag;
+                Edit.Visible = isFlag;
+                addCat.Visible = isFlag;
+                controlClient.Visible = isFlag;
         }
 
         /// <summary>
@@ -94,6 +91,7 @@ namespace AutoShops.DBL
                 dataGridView1.Rows[i].Cells[0].Value = orders[i].Name;
                 dataGridView1.Rows[i].Cells[1].Value = orders[i].Category?.NameCategory;//categoryRepositories.ShowCategoriesKey( orders[i].CategoryID);
                 dataGridView1.Rows[i].Cells[2].Value = orders[i].Price;
+                dataGridView1.Rows[i].Cells[3].Value = orders[i].Articl;
             }
         }
         /// <summary>
@@ -113,7 +111,7 @@ namespace AutoShops.DBL
         /// <param name="dataGridView"></param>
         public void SelectTextAndFillDaraGrid (string name, DataGridView dataGridView) {
             dataGridView.Rows.Clear();
-            var c = orderRepositories.ShowOrdersName(name);
+            var c = orderRepositories.ShowOrdersContainsNameOrArticle(name);
             FillDataGrid(dataGridView, c);
         }
 

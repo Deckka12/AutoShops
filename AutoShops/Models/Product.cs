@@ -35,6 +35,7 @@ namespace AutoShops.Models {
         /// Ид категории
         /// </summary>
         public int CategoryID { get; set; }
+        public string Articl { get; set; }
         /// <summary>
         /// Количество товара в магазине
         /// </summary>

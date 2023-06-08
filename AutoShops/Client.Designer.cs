@@ -23,18 +23,18 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent () {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ThisOrder = new System.Windows.Forms.Button();
             this.RemoveAddEmpl = new System.Windows.Forms.Button();
             this.ViewParts = new System.Windows.Forms.Button();
             this.OrdersParts = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ControlClient = new System.Windows.Forms.Button();
             this.Cart = new System.Windows.Forms.Button();
             this.ViewProduct = new System.Windows.Forms.DataGridView();
-            this.NameItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categories = new System.Windows.Forms.ComboBox();
             this.Filtered = new System.Windows.Forms.GroupBox();
             this.NamesProduct = new System.Windows.Forms.TextBox();
@@ -59,7 +59,10 @@
             this.EditCate = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.CatName = new System.Windows.Forms.ComboBox();
-            this.ControlClient = new System.Windows.Forms.Button();
+            this.NameItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Атикль = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewProduct)).BeginInit();
             this.Filtered.SuspendLayout();
@@ -132,6 +135,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.ControlClient);
             this.panel1.Controls.Add(this.Cart);
             this.panel1.Controls.Add(this.ThisOrder);
@@ -145,6 +150,45 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(249, 658);
             this.panel1.TabIndex = 1;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(-4, 561);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(252, 69);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Выйти";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(-5, 561);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(252, 69);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Авторизоваться";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // ControlClient
+            // 
+            this.ControlClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ControlClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ControlClient.Location = new System.Drawing.Point(-4, 432);
+            this.ControlClient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ControlClient.Name = "ControlClient";
+            this.ControlClient.Size = new System.Drawing.Size(252, 69);
+            this.ControlClient.TabIndex = 6;
+            this.ControlClient.Text = "Управление клиентами";
+            this.ControlClient.UseVisualStyleBackColor = true;
+            this.ControlClient.Click += new System.EventHandler(this.ControlClient_Click);
             // 
             // Cart
             // 
@@ -166,16 +210,17 @@
             this.ViewProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameItem,
             this.Category,
-            this.Price});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ViewProduct.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Price,
+            this.Атикль});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ViewProduct.DefaultCellStyle = dataGridViewCellStyle1;
             this.ViewProduct.Location = new System.Drawing.Point(256, 134);
             this.ViewProduct.Margin = new System.Windows.Forms.Padding(0);
             this.ViewProduct.Name = "ViewProduct";
@@ -185,24 +230,6 @@
             this.ViewProduct.Visible = false;
             this.ViewProduct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.ViewProduct.SelectionChanged += new System.EventHandler(this.ViewProduct_SelectionChanged);
-            // 
-            // NameItem
-            // 
-            this.NameItem.HeaderText = "Название";
-            this.NameItem.Name = "NameItem";
-            this.NameItem.Width = 250;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Категория";
-            this.Category.Name = "Category";
-            this.Category.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Цена";
-            this.Price.Name = "Price";
-            this.Price.Width = 125;
             // 
             // Categories
             // 
@@ -452,18 +479,28 @@
             this.CatName.TabIndex = 7;
             this.CatName.SelectedIndexChanged += new System.EventHandler(this.CatName_SelectedIndexChanged);
             // 
-            // ControlClient
+            // NameItem
             // 
-            this.ControlClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ControlClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ControlClient.Location = new System.Drawing.Point(-4, 432);
-            this.ControlClient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ControlClient.Name = "ControlClient";
-            this.ControlClient.Size = new System.Drawing.Size(252, 69);
-            this.ControlClient.TabIndex = 6;
-            this.ControlClient.Text = "Управление клиентами";
-            this.ControlClient.UseVisualStyleBackColor = true;
-            this.ControlClient.Click += new System.EventHandler(this.ControlClient_Click);
+            this.NameItem.HeaderText = "Название";
+            this.NameItem.Name = "NameItem";
+            this.NameItem.Width = 150;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Категория";
+            this.Category.Name = "Category";
+            this.Category.Width = 125;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Цена";
+            this.Price.Name = "Price";
+            this.Price.Width = 125;
+            // 
+            // Атикль
+            // 
+            this.Атикль.HeaderText = "Атикль";
+            this.Атикль.Name = "Атикль";
             // 
             // Client
             // 
@@ -476,7 +513,6 @@
             this.Controls.Add(this.ViewProduct);
             this.Controls.Add(this.panel1);
             this.Name = "Client";
-            this.Text = "Client1";
             this.Load += new System.EventHandler(this.Client_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -500,9 +536,6 @@
         private Label label1;
         private Panel panel1;
         private DataGridView ViewProduct;
-        private DataGridViewTextBoxColumn NameItem;
-        private DataGridViewTextBoxColumn Category;
-        private DataGridViewTextBoxColumn Price;
         private ComboBox Categories;
         private GroupBox Filtered;
         private Label label2;
@@ -529,5 +562,11 @@
         private Label label7;
         private ComboBox CatName;
         private Button ControlClient;
+        private Button button2;
+        private Button button3;
+        private DataGridViewTextBoxColumn NameItem;
+        private DataGridViewTextBoxColumn Category;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn Атикль;
     }
 }

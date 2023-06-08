@@ -89,7 +89,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "InputUser";
-            this.Text = "InputUser";
             this.Load += new System.EventHandler(this.InputUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

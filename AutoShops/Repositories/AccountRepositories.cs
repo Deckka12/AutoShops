@@ -11,6 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace AutoShops.Repositories {
     public class AccountRepositories {
+        Context _context = new Context();
         public AccountRepositories () {
             //_account = account;
         }
@@ -19,15 +20,15 @@ namespace AutoShops.Repositories {
         /// </summary>
         /// <param name="account"></param>
         public void Add (Account account) {
-            using(var addAccount = new Context()) {
-                if(addAccount.Accounts.Any(x=>x.Name==account.Name && x.Login ==account.Login))
+
+                if(_context.Accounts.Any(x=>x.Name==account.Name && x.Login ==account.Login))
                 {
                     throw new Exception($"Пользователь {account.Name} с логином {account.Login} уже зарегистрирован.");
                 }
                 var addUser = new Account { Name = account.Name, Login = account.Login, Password = account.Password, Administration = account.Administration };
-                addAccount.Accounts.Add(addUser);
-                addAccount.SaveChanges();
-            }
+                _context.Accounts.Add(addUser);
+            _context.SaveChanges();
+
         }
         /// <summary>
         /// ВХод в аккаунт
@@ -36,42 +37,37 @@ namespace AutoShops.Repositories {
         /// <param name="pass"></param>
         /// <returns></returns>
         public Account InputAccaunt (string Login, string pass) {
-            using(var addAccount = new Context())
-            {
-               var account= addAccount.Accounts.Where(x => x.Login == Login && x.Password==pass).ToList();
+               var account= _context.Accounts.Where(x => x.Login == Login && x.Password==pass).ToList();
                 if(account.Count > 0)
                 {
                     account.FirstOrDefault().IsLocked = true;
-                    addAccount.SaveChanges();
+                    _context.SaveChanges();
                     return account.FirstOrDefault();
                 }
                 else
                     return null;
-            }
         }
         /// <summary>
         /// Выход в аккаунт
         /// </summary>
         /// <returns></returns>
         public void OutputAccaunt () {
-            using(var addAccount = new Context())
-            {
-                var account = addAccount.Accounts.Where(x => x.IsLocked == true).ToList();
+
+                var account = _context.Accounts.Where(x => x.IsLocked == true).ToList();
                 if(account.Count > 0)
                 {
                     account.FirstOrDefault().IsLocked = false;
-                    addAccount.SaveChanges();
+                    _context.SaveChanges();
                 }
-            }
+
         }
         /// <summary>
         /// Проверка администратор или нет
         /// </summary>
         /// <returns></returns>
         public bool OutputAccauntIsAdmin () {
-            using(var addAccount = new Context())
-            {
-                var account = addAccount.Accounts.Where(x => x.IsLocked == true && x.Administration==true).ToList();
+
+                var account = _context.Accounts.Where(x => x.IsLocked == true && x.Administration==true).ToList();
                 if(account.Count > 0)
                 {
                     return true;
@@ -80,7 +76,7 @@ namespace AutoShops.Repositories {
                 {
                     return false;
                 }
-            }
+
         }
 
         /// <summary>
@@ -88,9 +84,8 @@ namespace AutoShops.Repositories {
         /// </summary>
         /// <returns></returns>
         public bool CheckInput () {
-            using(var addAccount = new Context())
-            {
-                var account = addAccount.Accounts.Where(x => x.IsLocked == true).ToList();
+
+                var account = _context.Accounts.Where(x => x.IsLocked == true).ToList();
                 if(account.Count > 0)
                 {
                     return true;
@@ -98,7 +93,6 @@ namespace AutoShops.Repositories {
                 else
                     return false;
 
-            }
         }
         /// <summary>
         /// Удаления пользователя
@@ -106,9 +100,9 @@ namespace AutoShops.Repositories {
         /// <param name="Login"></param>
         public void Delete (string Login) {
             using(var db = new Context()) {
-                var users = db.Accounts.FirstOrDefault(x => x.Login == Login);
-                db.Remove(users);
-                db.SaveChanges();
+                var users = _context.Accounts.FirstOrDefault(x => x.Login == Login);
+                _context.Remove(users);
+                _context.SaveChanges();
             }
         }
         /// <summary>
@@ -116,35 +110,28 @@ namespace AutoShops.Repositories {
         /// </summary>
         /// <param name="account"></param>
         public void Update (Account old,Account newAccount) {
-            using(var db = new Context())
-            {
-                old = db.Accounts.Where(x => x.Name == old.Name).FirstOrDefault();
+                old = _context.Accounts.Where(x => x.Name == old.Name).FirstOrDefault();
                 old.Name=newAccount.Name;
                 old.Password = newAccount.Password;
                 old.Login = newAccount.Login;
                 old.Administration = newAccount.Administration;
-                db.SaveChangesAsync();
-            }
+                _context.SaveChangesAsync();
         }
         /// <summary>
         /// Обновление пароля
         /// </summary>
         /// <param name="newPass"></param>
         public void NewPass(string newPass,Account account) {
-            using(var db = new Context()) {
                 account.Password = newPass;
-                db.SaveChanges();
-            }
+                _context.SaveChanges();
         }
         /// <summary>
         /// Получить всех пользователей
         /// </summary>
         /// <returns></returns>
         public List<Account> GetAccounts () {
-            using(var db = new Context())
-            {
-                return db.Accounts.ToList();
-            }
+
+                return _context.Accounts.ToList();
         }
         /// <summary>
         /// Получить аккаунт по ФИО
@@ -152,10 +139,9 @@ namespace AutoShops.Repositories {
         /// <param name="Name"></param>
         /// <returns></returns>
         public Account GetAccount(string Name) {
-            using(var db = new Context())
-            {
-                return db.Accounts.Where(x => x.Name == Name).FirstOrDefault();
-            }
+
+                return _context.Accounts.Where(x => x.Name == Name).FirstOrDefault();
+
         }
     }
 }

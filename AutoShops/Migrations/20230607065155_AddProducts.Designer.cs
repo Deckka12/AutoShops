@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoShops.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230510051607_EditTest")]
-    partial class EditTest
+    [Migration("20230607065155_AddProducts")]
+    partial class AddProducts
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,9 @@ namespace AutoShops.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.1")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -184,6 +187,10 @@ namespace AutoShops.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProduct"));
 
+                    b.Property<string>("Articl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
@@ -309,7 +316,7 @@ namespace AutoShops.Migrations
             modelBuilder.Entity("AutoShops.Models.Product", b =>
                 {
                     b.HasOne("AutoShops.Models.Category", "Category")
-                        .WithMany("Users")
+                        .WithMany("Product")
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -349,7 +356,7 @@ namespace AutoShops.Migrations
 
             modelBuilder.Entity("AutoShops.Models.Category", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("AutoShops.Models.Clients", b =>

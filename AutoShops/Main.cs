@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VisioForge.Libs.AForge.Math.Geometry;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace AutoShops {
@@ -133,6 +134,7 @@ namespace AutoShops {
         }
 
         private void Directory_Click (object sender, EventArgs e) {
+            
             DialogResult dialogResult = MessageBox.Show("Хотите войти в режиме администратора?","Информация", MessageBoxButtons.YesNo);
             if(dialogResult == DialogResult.Yes)
             {
@@ -140,15 +142,21 @@ namespace AutoShops {
                 cl.ShowDialog();
                 if(repository.CheckInput())
                 {
+                    clinet = new Client();  // создаем новый экземпляр формы
+                    clinet.FormClosed += new FormClosedEventHandler(clinet_FormClosed); // подписываемся на событие FormClosed
                     clinet.Show();
                 }
             }
             else
             {
+                clinet = new Client();  // создаем новый экземпляр формы
+                clinet.FormClosed += new FormClosedEventHandler(clinet_FormClosed); // подписываемся на событие FormClosed
                 clinet.Show();
             }
         }
-
+        private void clinet_FormClosed (object sender, FormClosedEventArgs e) {
+            clinet.Dispose();  // уничтожаем объект формы при закрытии
+        }
         private void button3_Click (object sender, EventArgs e) {
         
         }

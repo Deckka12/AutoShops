@@ -15,15 +15,16 @@ using AutoShops.Forms;
 using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using AutoShops.DBL.Excel;
+using VisioForge.Core.UI.WPF;
 
 namespace AutoShops
 {
     public partial class Client : Form
     {
-        Context _context;
+        
         public Client () {
             InitializeComponent();
-            _context = ContextRun.Context();
+           
         }
         Color defaultBackColor;
         ProductRepositories orders = new ProductRepositories();
@@ -31,14 +32,17 @@ namespace AutoShops
         CategoryRepositories CategoryRepositories = new CategoryRepositories();
         Product OldProduct;
         Category oldCategoty;
-        CartRepositories cartRepositories = new CartRepositories();
+        CartRepositories cartRepositories = new CartRepositories(); 
+        AccountRepositories repository = new AccountRepositories();
 
         private void Client_Load (object sender, EventArgs e) {
             ViewParts_Click(sender, e);
             ViewParts.BackColor = Color.DeepSkyBlue;
             defaultBackColor = OrdersParts.BackColor;
-            form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1, button1, ViewExcel, RemoveProduct, AddCat, EditCate,ControlClient);
+            form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1, button1, ViewExcel, RemoveProduct, AddCat, EditCate, ControlClient, false);
             ViewProduct.ReadOnly = true;
+            button2.Visible = true;
+            button3.Visible = false;
             form.DesignDataGridView(ViewProduct);
         }
         private void ButtonColor (object sender, EventArgs e) {
@@ -243,6 +247,34 @@ namespace AutoShops
         private void ControlClient_Click (object sender, EventArgs e) {
             ControlCLient cl = new ControlCLient();
             cl.Show();
+        }
+
+        private void button2_Click (object sender, EventArgs e) {
+            InputUser cl = new InputUser();
+            
+            if(cl.ShowDialog() ==DialogResult.OK)
+            {
+                if(cl.returnValue)
+                    form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1, button1, ViewExcel, RemoveProduct, AddCat, EditCate, ControlClient,true);
+                else
+                    form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1, button1, ViewExcel, RemoveProduct, AddCat, EditCate, ControlClient,false);
+
+            }
+            button2.Visible = false;
+            button3.Visible = true;
+        }
+
+        private void button3_Click (object sender, EventArgs e) {
+            var result = MessageBox.Show("Вы действительно хотите выйти?", "Question", MessageBoxButtons.YesNo);
+            if(result == DialogResult.Yes)
+            {
+                form.FillControls(RemoveAddEmpl, ThisOrder, EditProduct, groupBox1, button1, ViewExcel, RemoveProduct, AddCat, EditCate, ControlClient, false);
+                button2.Visible = true;
+                button3.Visible = false;
+            }
+            else
+                return;
+            
         }
     }
 }
