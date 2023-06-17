@@ -33,21 +33,29 @@ namespace AutoShops.Forms
         }
 
         private void button1_Click (object sender, EventArgs e) {
-            CartRepositories cartRepositories = new CartRepositories();
-            var cart = cartRepositories.ShowCart();
-            Clients client = new Clients()
+            try
             {
-                Name = Name.Text,
-                FirstName = FirstName.Text,
-                MiddleName = MiddleName.Text,
-                Addres = Addres.Text,
-                Phone = Phone.Text,
-                Email = Email.Text
-            };
-            var order =OrderRepositories.Add(client);
-            SendMail.Send(client.Email, order,cart);
-            Thread.Sleep(300);
-            this.Close();
+                CartRepositories cartRepositories = new CartRepositories();
+                var cart = cartRepositories.ShowCart();
+                Clients client = new Clients()
+                {
+                    Name = Name.Text,
+                    FirstName = FirstName.Text,
+                    MiddleName = MiddleName.Text,
+                    Addres = Addres.Text,
+                    Phone = Phone.Text,
+                    Email = Email.Text
+                };
+                var order = OrderRepositories.Add(client);
+                SendMail.Send(client.Email, order, cart);
+                Thread.Sleep(300);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message +Environment.NewLine+ "Оформление заказа отменено!");
+            }
+            
         }
 
         private void InfoCLient_Enter (object sender, EventArgs e) {

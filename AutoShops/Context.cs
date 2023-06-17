@@ -25,7 +25,7 @@ namespace AutoShops
         }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseSqlServer(@"Server=Komputer;Database=DBDiplom2;TrustServerCertificate=True;Trusted_Connection=True;MultipleActiveResultSets=True;").UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-T63JNGU\SQLEXPRESS;Database=DBDiplom2;TrustServerCertificate=True;Trusted_Connection=True;MultipleActiveResultSets=True;").UseLazyLoadingProxies();
             optionsBuilder.ConfigureWarnings(w => w.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning));
         }
 

@@ -178,7 +178,8 @@ namespace AutoShops
                     Price = decimal.Parse(PriceProduct.Text),
                     Comment = CommentProduct.Text,
                     CategoryID = CategoryRepositories.ShowCategorID(CategoryProduct.Text),
-                   Articl = textBox1.Text
+                    Articl = textBox1.Text,
+                    Count = int.Parse( ProdCount.Text)
                 };
                 orders.EditProduct(OldProduct, productNew);
                 form.FillDataGrid(ViewProduct, orders.ShowOrders());
@@ -207,7 +208,8 @@ namespace AutoShops
                 Comment = CommentProduct.Text,
                 CategoryID = CategoryRepositories.ShowCategorID(CategoryProduct.Text),
                 Image = imageData,
-                Articl = textBox1.Text
+                Articl = textBox1.Text,
+                Count= int.Parse( ProdCount.Text)
             };
 
             orders.AddProduct(productNew);

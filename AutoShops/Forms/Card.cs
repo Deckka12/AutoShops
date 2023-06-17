@@ -67,33 +67,36 @@ namespace AutoShops.Forms
             int selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if(selectedRowCount > 0)
             {
-                for(int i = 0; i < selectedRowCount; i++)
-                {
-                    Label label = new Label();
-                    Button button1 = new Button();
-                    Button button2 = new Button();
+                //for(int i = 0; i < selectedRowCount; i++)
+                //{
+                //    Label label = new Label();
+                //    Button button1 = new Button();
+                //    Button button2 = new Button();
 
 
-                    button1.Text = "OK";
-                    label.Location = new Point(10, 10);
-                    label.Size = new Size(218, 86);
-                    label.Text = $"Удалить товар полностью? Если нужно удалить только опредленное количество введите количество и нажмите ОК, если нужно удалить все, просто нажмите ОК, для отмены нажмите Отмена";
-                    text.Location = new Point(label.Left, label.Height + label.Top + 10);
-                    button1.Location = new Point(text.Left, text.Height + text.Top + 10);
-                    button2.Text = "Отмена";
-                    button2.Location
-                       = new Point(button1.Left, button1.Height + button1.Top + 10);
-                    form1.Text = "Удаление товара";
-                    button1.Click += Removs;
-                    button2.Click += Cancel;
-                    button1.Click += client.ShowForm;
+                //    button1.Text = "OK";
+                //    label.Location = new Point(10, 10);
+                //    label.Size = new Size(218, 86);
+                //    label.Text = $"Удалить товар полностью? Если нужно удалить только опредленное количество введите количество и нажмите ОК, если нужно удалить все, просто нажмите ОК, для отмены нажмите Отмена";
+                //    text.Location = new Point(label.Left, label.Height + label.Top + 10);
+                //    button1.Location = new Point(text.Left, text.Height + text.Top + 10);
+                //    button2.Text = "Отмена";
+                //    button2.Location
+                //       = new Point(button1.Left, button1.Height + button1.Top + 10);
+                //    form1.Text = "Удаление товара";
+                //    button1.Click += Removs;
+                //    button2.Click += Cancel;
+                //    button1.Click += client.ShowForm;
 
-                    form1.Controls.Add(button1);
-                    form1.Controls.Add(text);
-                    form1.Controls.Add(label);
-                    form1.Controls.Add(button2);
-                    form1.ShowDialog();
-                }
+                //    form1.Controls.Add(button1);
+                //    form1.Controls.Add(text);
+                //    form1.Controls.Add(label);
+                //    form1.Controls.Add(button2);
+                //    form1.ShowDialog();
+                //}
+                cartRepositories.RemoveCart(orders.ShowOrdersName(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()).FirstOrDefault(), 0);
+                this.Close();
+                form1.Close();
             }
             else
             {

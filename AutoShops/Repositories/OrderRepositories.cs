@@ -114,10 +114,24 @@ namespace AutoShops.Repositories
                 orders.DateDeliveri = DateTime.Now.AddDays(3);
             else
                 orders.DateDeliveri = DateTime.Now;
+
             _context.ProductOrder.AddRange(productOrders);
             orders.CostOrder = sum;
             _context.SaveChanges();
-
+            foreach(var order in productOrders)
+            {
+               var product = _context.Product.FirstOrDefault(x => x.IdProduct == order.productId);
+                if (product.Count < order.Count)
+                {
+                    throw new Exception($"В наличеие есть {product.Count} товаров {product.Name}");
+                }
+                else
+                {
+                    product.Count -= product.Count;
+                    _context.Update(product);
+                    _context.SaveChanges();
+                }
+            }
             _cartRepositories.FullRemoveCart();
 
             return orders;

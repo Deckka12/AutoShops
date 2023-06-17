@@ -15,26 +15,29 @@ namespace AutoShops.Forms
 {
     public partial class Registration : Form
     {
-        public Registration () {
+        public Registration()
+        {
             InitializeComponent();
         }
-        FormLoad form = new FormLoad ();
+        FormLoad form = new FormLoad();
         AccountRepositories accountrep = new AccountRepositories();
         Account oldAccount;
-        private void button1_Click (object sender, EventArgs e) {
-           
+        private void button1_Click(object sender, EventArgs e)
+        {
+
             Account account = new Account
             {
                 Administration = Admin.Checked,
                 Name = FIO.Text,
-                Login=Login.Text,
-                Password=Password.Text
+                Login = Login.Text,
+                Password = Password.Text
             };
             try
             {
                 accountrep.Add(account);
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
                 return;
             }
@@ -42,19 +45,21 @@ namespace AutoShops.Forms
             form.SelectedAccount(dataGridView1);
         }
 
-        private void Registration_Load (object sender, EventArgs e) {
+        private void Registration_Load(object sender, EventArgs e)
+        {
             form.SelectedAccount(dataGridView1);
             form.DesignDataGridView(dataGridView1);
         }
 
-        private void dataGridView1_SelectionChanged (object sender, EventArgs e) {
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
 
             int selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            if(selectedRowCount > 0)
+            if (selectedRowCount > 0)
             {
                 oldAccount = null;
                 oldAccount = accountrep.GetAccount(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                if(oldAccount != null)
+                if (oldAccount != null)
                 {
                     FIO.Text = oldAccount.Name;
                     Login.Text = oldAccount.Login;
@@ -64,9 +69,10 @@ namespace AutoShops.Forms
             }
         }
 
-        private void EditAccount_Click (object sender, EventArgs e) {
+        private void EditAccount_Click(object sender, EventArgs e)
+        {
             int selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            if(selectedRowCount > 0)
+            if (selectedRowCount > 0)
             {
                 var newAc = new Account
                 {
@@ -78,6 +84,18 @@ namespace AutoShops.Forms
                 accountrep.Update(oldAccount, newAc);
                 form.SelectedAccount(dataGridView1);
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            int selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selectedRowCount > 0)
+            {
+                accountrep.Delete(Login.Text);
+                form.SelectedAccount(dataGridView1);
+            }
+            else
+                MessageBox.Show("Выберите пользователя для удаления");
         }
     }
 }

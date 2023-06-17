@@ -11,8 +11,9 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose (bool disposing) {
-            if(disposing && ( components != null ))
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
             {
                 components.Dispose();
             }
@@ -25,156 +26,182 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent () {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.FIO = new System.Windows.Forms.TextBox();
-            this.Login = new System.Windows.Forms.TextBox();
-            this.Password = new System.Windows.Forms.TextBox();
-            this.Admin = new System.Windows.Forms.CheckBox();
-            this.Register = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditAccount = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+        private void InitializeComponent()
+        {
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            FIO = new TextBox();
+            Login = new TextBox();
+            Password = new TextBox();
+            Admin = new CheckBox();
+            Register = new Button();
+            dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            EditAccount = new Button();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ФИО";
+            label1.AutoSize = true;
+            label1.Location = new Point(26, 47);
+            label1.Name = "label1";
+            label1.Size = new Size(42, 20);
+            label1.TabIndex = 0;
+            label1.Text = "ФИО";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Логин";
+            label2.AutoSize = true;
+            label2.Location = new Point(26, 109);
+            label2.Name = "label2";
+            label2.Size = new Size(52, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Логин";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 130);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Пароль";
+            label3.AutoSize = true;
+            label3.Location = new Point(26, 173);
+            label3.Name = "label3";
+            label3.Size = new Size(62, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Пароль";
             // 
             // FIO
             // 
-            this.FIO.Location = new System.Drawing.Point(148, 27);
-            this.FIO.Name = "FIO";
-            this.FIO.Size = new System.Drawing.Size(100, 23);
-            this.FIO.TabIndex = 4;
+            FIO.Location = new Point(169, 36);
+            FIO.Margin = new Padding(3, 4, 3, 4);
+            FIO.Name = "FIO";
+            FIO.Size = new Size(114, 27);
+            FIO.TabIndex = 4;
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(148, 74);
-            this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(100, 23);
-            this.Login.TabIndex = 5;
+            Login.Location = new Point(169, 99);
+            Login.Margin = new Padding(3, 4, 3, 4);
+            Login.Name = "Login";
+            Login.Size = new Size(114, 27);
+            Login.TabIndex = 5;
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(148, 122);
-            this.Password.Name = "Password";
-            this.Password.PasswordChar = '*';
-            this.Password.Size = new System.Drawing.Size(100, 23);
-            this.Password.TabIndex = 6;
-            this.Password.UseSystemPasswordChar = true;
+            Password.Location = new Point(169, 163);
+            Password.Margin = new Padding(3, 4, 3, 4);
+            Password.Name = "Password";
+            Password.PasswordChar = '*';
+            Password.Size = new Size(114, 27);
+            Password.TabIndex = 6;
+            Password.UseSystemPasswordChar = true;
             // 
             // Admin
             // 
-            this.Admin.AutoSize = true;
-            this.Admin.Location = new System.Drawing.Point(148, 164);
-            this.Admin.Name = "Admin";
-            this.Admin.Size = new System.Drawing.Size(113, 19);
-            this.Admin.TabIndex = 7;
-            this.Admin.Text = "Администратор";
-            this.Admin.UseVisualStyleBackColor = true;
+            Admin.AutoSize = true;
+            Admin.Location = new Point(169, 219);
+            Admin.Margin = new Padding(3, 4, 3, 4);
+            Admin.Name = "Admin";
+            Admin.Size = new Size(141, 24);
+            Admin.TabIndex = 7;
+            Admin.Text = "Администратор";
+            Admin.UseVisualStyleBackColor = true;
             // 
             // Register
             // 
-            this.Register.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Register.Location = new System.Drawing.Point(12, 207);
-            this.Register.Name = "Register";
-            this.Register.Size = new System.Drawing.Size(123, 33);
-            this.Register.TabIndex = 8;
-            this.Register.Text = "Зарегистрировать";
-            this.Register.UseVisualStyleBackColor = false;
-            this.Register.Click += new System.EventHandler(this.button1_Click);
+            Register.BackColor = SystemColors.ActiveCaption;
+            Register.Location = new Point(14, 276);
+            Register.Margin = new Padding(3, 4, 3, 4);
+            Register.Name = "Register";
+            Register.Size = new Size(141, 44);
+            Register.TabIndex = 8;
+            Register.Text = "Зарегистрировать";
+            Register.UseVisualStyleBackColor = false;
+            Register.Click += button1_Click;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(286, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(335, 237);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            dataGridView1.BackgroundColor = SystemColors.ControlLight;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
+            dataGridView1.Location = new Point(327, 16);
+            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(383, 368);
+            dataGridView1.TabIndex = 9;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "ФИО";
-            this.Column1.Name = "Column1";
+            Column1.HeaderText = "ФИО";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.Width = 125;
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Логин";
-            this.Column2.Name = "Column2";
+            Column2.HeaderText = "Логин";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Width = 125;
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Статус";
-            this.Column3.Name = "Column3";
+            Column3.HeaderText = "Статус";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Width = 125;
             // 
             // EditAccount
             // 
-            this.EditAccount.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.EditAccount.Location = new System.Drawing.Point(148, 207);
-            this.EditAccount.Name = "EditAccount";
-            this.EditAccount.Size = new System.Drawing.Size(123, 33);
-            this.EditAccount.TabIndex = 10;
-            this.EditAccount.Text = "Изменить";
-            this.EditAccount.UseVisualStyleBackColor = false;
-            this.EditAccount.Click += new System.EventHandler(this.EditAccount_Click);
+            EditAccount.BackColor = SystemColors.ActiveCaption;
+            EditAccount.Location = new Point(169, 276);
+            EditAccount.Margin = new Padding(3, 4, 3, 4);
+            EditAccount.Name = "EditAccount";
+            EditAccount.Size = new Size(141, 44);
+            EditAccount.TabIndex = 10;
+            EditAccount.Text = "Изменить";
+            EditAccount.UseVisualStyleBackColor = false;
+            EditAccount.Click += EditAccount_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ActiveCaption;
+            button1.Location = new Point(103, 328);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(141, 44);
+            button1.TabIndex = 11;
+            button1.Text = "Удалить";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // Registration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 251);
-            this.Controls.Add(this.EditAccount);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.Register);
-            this.Controls.Add(this.Admin);
-            this.Controls.Add(this.Password);
-            this.Controls.Add(this.Login);
-            this.Controls.Add(this.FIO);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Name = "Registration";
-            this.Load += new System.EventHandler(this.Registration_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(723, 394);
+            Controls.Add(button1);
+            Controls.Add(EditAccount);
+            Controls.Add(dataGridView1);
+            Controls.Add(Register);
+            Controls.Add(Admin);
+            Controls.Add(Password);
+            Controls.Add(Login);
+            Controls.Add(FIO);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Registration";
+            Load += Registration_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -192,5 +219,6 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        private Button button1;
     }
 }
