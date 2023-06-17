@@ -33,7 +33,8 @@ namespace AutoShops.Repositories
             }
             else
             {
-                return AddOrder(_clientRepositories.Search(_clientRepositories.AddClient(client)));
+                var clients = _clientRepositories.AddClient(client);
+                return AddOrder(_clientRepositories.Search(client));
             }
 
         }

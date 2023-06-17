@@ -11,9 +11,9 @@ namespace AutoShops.Repositories
 {
     public class ProductRepositories
     {
-        Context _context = new Context();
+        Context _context;
         public ProductRepositories () {
-
+            _context = new Context();
         }
         CategoryRepositories categoryRepositories = new CategoryRepositories();
         /// <summary>
@@ -88,19 +88,21 @@ namespace AutoShops.Repositories
         /// </summary>
         /// <param name="product"></param>
         /// <exception cref="Exception"></exception>
-        public void AddProduct (Product product) {
-
-                if(_context.Product.Any(x => x.Name == product.Name && x.Price == product.Price))
-                    throw new Exception("Товар с таким наименоованием и ценной существует");
-                else
-                {
-                    _context.Product.Add(product);
-                    _context.SaveChangesAsync();
-                }
+        public void AddProduct(Product product)
+        {
+            using (var cintext = new Context()) { 
+            if (cintext.Product.Any(x => x.Name == product.Name && x.Price == product.Price))
+                throw new Exception("Товар с таким наименоованием и ценной существует");
+            else
+            {
+                cintext.Product.Add(product);
+                cintext.SaveChanges();
+            }
+        }
 
         }
         /// <summary>
-        /// Удаление товара
+        /// Удаление товараSqlException: Не удалось вставить значение NULL в столбец "Articl", таблицы "DBDiplom2.dbo.Product"; в столбце запрещены значения NULL. Ошибка в INSERT.
         /// </summary>
         /// <param name="product"></param>
         public void RemoveProduct (Product product) {

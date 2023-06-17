@@ -20,12 +20,13 @@ namespace AutoShops
 
 
         public Context () {
-            // Database.EnsureDeleted();
+           //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseSqlServer(@"Server=Komputer;Database=DBDiplom2;TrustServerCertificate=True;Trusted_Connection=True;MultipleActiveResultSets=True;");
+            optionsBuilder.UseSqlServer(@"Server=Komputer;Database=DBDiplom2;TrustServerCertificate=True;Trusted_Connection=True;MultipleActiveResultSets=True;").UseLazyLoadingProxies();
+            optionsBuilder.ConfigureWarnings(w => w.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning));
         }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
